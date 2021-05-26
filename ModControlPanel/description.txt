@@ -1,1 +1,1 @@
-Control Panel is a pretty cool mod, it does...this. Modify this file with a description of your mod.
+Supplies a handy in-game control panel dialog box that can support custom tabs. Accessible via. a toggle button in the top left corner when viewing the inventory screen.
