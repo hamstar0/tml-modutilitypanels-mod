@@ -10,7 +10,7 @@ using ModControlPanel.Internals.ControlPanel;
 
 namespace ModControlPanel {
 	/// @private
-	partial class ModHelpersPlayer : ModPlayer {
+	partial class ModControlPanelPlayer : ModPlayer {
 		public override bool CloneNewInstances => false;
 
 

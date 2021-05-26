@@ -8,11 +8,11 @@ namespace ModControlPanel {
 	/// Defines Mod Control Panel config settings.
 	/// </summary>
 	[Label( "Mod Control Panel Settings" )]
-	public class ModHelpersConfig : ModConfig {
+	public class ModControlPanelConfig : ModConfig {
 		/// <summary>
 		/// Gets the stack-merged singleton instance of this config file.
 		/// </summary>
-		public static ModHelpersConfig Instance => ModContent.GetInstance<ModHelpersConfig>();
+		public static ModControlPanelConfig Instance => ModContent.GetInstance<ModControlPanelConfig>();
 
 
 

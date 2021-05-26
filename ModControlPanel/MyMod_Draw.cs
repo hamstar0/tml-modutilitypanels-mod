@@ -40,7 +40,7 @@ namespace ModControlPanel {
 			try {
 				var cp = ModContent.GetInstance<UIControlPanel>();
 
-				if( !ModHelpersConfig.Instance.DisableControlPanel ) {
+				if( !ModControlPanelConfig.Instance.DisableControlPanel ) {
 					cp.UpdateToggler();
 
 					cp.DrawToggler( sb );

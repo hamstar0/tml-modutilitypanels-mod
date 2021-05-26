@@ -27,7 +27,7 @@ namespace ModControlPanel.Commands {
 				return;
 			}
 
-			if( ModHelpersConfig.Instance.DisableControlPanel ) {
+			if( ModControlPanelConfig.Instance.DisableControlPanel ) {
 				caller.Reply( "Control panel disabled.", Color.Red );
 			} else {
 				ModContent.GetInstance<UIControlPanel>().Open();

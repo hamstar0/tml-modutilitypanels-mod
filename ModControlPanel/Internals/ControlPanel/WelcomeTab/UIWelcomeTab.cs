@@ -15,7 +15,7 @@ namespace ModControlPanel.Internals.ControlPanel.ModControlPanel {
 			"Buy me coffee for coding! :)",
 			"Did you know I make other mods?",
 			"Want more?",
-			"Please support Mod Helpers!"
+			"Please support Mod Libs!"
 		};
 
 

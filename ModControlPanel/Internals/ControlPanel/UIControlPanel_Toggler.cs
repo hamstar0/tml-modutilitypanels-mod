@@ -13,7 +13,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 	partial class UIControlPanel : UIState {
 		private static Vector2 TogglerPosition {
 			get {
-				var config = ModHelpersConfig.Instance;
+				var config = ModControlPanelConfig.Instance;
 				int x = config.ControlPanelIconX < 0
 					? Main.screenWidth + config.ControlPanelIconX
 					: config.ControlPanelIconX;
