@@ -1,7 +1,9 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework.Graphics;
+using Terraria;
 using Terraria.ID;
 using Terraria.UI;
-using Microsoft.Xna.Framework.Graphics;
+using ModLibsUI.Classes.UI.Theme;
+using ModControlPanel.Internals.ControlPanel.ModControlPanel;
 
 
 namespace ModControlPanel.Internals.ControlPanel {
@@ -18,14 +20,19 @@ namespace ModControlPanel.Internals.ControlPanel {
 		////////////////
 
 		private void InitializeSingleton() {
-			if( Main.dedServ || Main.netMode == NetmodeID.Server ) { return; }
-
 			var mymod = ModControlPanelMod.Instance;
 
 			UIControlPanel.ControlPanelIcon = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIcon" );
 			UIControlPanel.ControlPanelIconLit = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIconLit" );
-		}
 
+			//
+
+			this.Theme = UITheme.Vanilla;
+
+			this.CurrentTabName = UIControlPanel.DefaultTabName;
+			this.Tabs[this.CurrentTabName] = new UIWelcomeControlPanelTab( this.Theme );
+			this.TabTitleOrder[this.CurrentTabName] = this.TabTitleOrder.Count;
+		}
 
 
 		////////////////

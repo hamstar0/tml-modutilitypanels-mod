@@ -35,15 +35,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
-		public bool IsTogglerLit { get; private set; }
+		public bool IsTogglerLit { get; private set; } = false;
 
-
-
-		////////////////
-
-		private void InitializeToggler() {
-			this.IsTogglerLit = false;
-		}
 
 
 		////////////////

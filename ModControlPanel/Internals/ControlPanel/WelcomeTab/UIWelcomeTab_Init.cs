@@ -9,7 +9,7 @@ namespace ModControlPanel.Internals.ControlPanel.ModControlPanel {
 	partial class UIWelcomeControlPanelTab : UIControlPanelTab {
 		private void InitializeComponents() {
 			float top = 0;
-
+			
 			this.Theme.ApplyPanel( this );
 
 			////////

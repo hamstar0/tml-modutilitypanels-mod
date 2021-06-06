@@ -1,43 +1,27 @@
 ﻿using Terraria;
-using Terraria.GameContent.UI.Elements;
 using Terraria.ID;
 using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
 using ModLibsUI.Classes.UI.Elements;
-using ModLibsUI.Classes.UI.Theme;
 
 
 namespace ModControlPanel.Internals.ControlPanel {
-	/// @private
-	public abstract class UIControlPanelTab : UIPanel {
-		/// @private
-		public UITheme Theme { get; protected set; }
-		/// @private
-		public bool IsInitialized { get; private set; }
-
+	partial class UIControlPanel : UIState {
+		public UIControlPanelTab GetTab( string name ) {
+			return this.Tabs.GetOrDefault( name );
+		}
 
 
 		////////////////
 
-		/// @private
-		public sealed override void OnInitialize() {
-			this.OnInitializeMe();
-			this.IsInitialized = true;
-		}
+		private void InitializeTab( string title, UIControlPanelTab tab ) {
+			tab.Width.Set( 0f, 1f );
+			tab.Height.Set( 0f, 1f );
 
-
-		/// @private
-		public abstract void OnInitializeMe();
-	}
-
-
-
-
-	partial class UIControlPanel : UIState {
-		public UIControlPanelTab GetTab( string name ) {
-			return this.Tabs.GetOrDefault( name );
+			this.AddTabCloseButton( title );
+			this.AddTabButton( title );
 		}
 
 
@@ -50,16 +34,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			if( this.IsInitialized ) {
 				this.InitializeTab( title, tab );
 			}
-		}
-
-		////
-
-		private void InitializeTab( string title, UIControlPanelTab tab ) {
-			tab.Width.Set( 0f, 1f );
-			tab.Height.Set( 0f, 1f );
-
-			this.AddTabCloseButton( title );
-			this.AddTabButton( title );
 		}
 
 
@@ -92,18 +66,22 @@ namespace ModControlPanel.Internals.ControlPanel {
 			UIControlPanelTab tab = this.Tabs[ title ];
 			int idx = this.TabTitleOrder[ title ];
 
-			int posX = UIControlPanel.TabWidth * idx;
+			int posX = UIControlPanel.TabButtonWidth * idx;
 
 			var button = new UITextPanelButton( tab.Theme, title );
 			button.Left.Set( (float)posX, 0f );
-			button.Top.Set( -UIControlPanel.TabHeight, 0f );
-			button.Width.Set( UIControlPanel.TabWidth, 0f );
-			button.Height.Set( UIControlPanel.TabHeight, 0f );
+			button.Top.Set( -UIControlPanel.TabButtonHeight, 0f );
+			button.Width.Set( UIControlPanel.TabButtonWidth, 0f );
+			button.Height.Set( UIControlPanel.TabButtonHeight, 0f );
 			button.OnClick += ( _, __ ) => {
 				this.ChangeToTab( title );
 			};
 
 			this.OuterContainer.Append( button );
+
+			this.OuterContainer.Recalculate();
+
+			//
 
 			this.TabButtons.Add( button );
 			this.TabButtonHover.Add( false );

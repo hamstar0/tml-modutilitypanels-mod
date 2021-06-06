@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.UI;
 using Terraria.GameContent.UI.Elements;
 using ModLibsCore.Classes.Loadable;
@@ -11,7 +12,6 @@ using ModLibsCore.Libraries.DotNET.Reflection;
 using ModLibsCore.Services.Timers;
 using ModLibsUI.Classes.UI.Elements;
 using ModLibsUI.Classes.UI.Theme;
-using ModControlPanel.Internals.ControlPanel.ModControlPanel;
 
 
 namespace ModControlPanel.Internals.ControlPanel {
@@ -21,8 +21,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
-		public static int TabWidth => 160;
-		public static int TabHeight => 24;
+		public static int TabButtonWidth => 160;
+		public static int TabButtonHeight => 24;
 
 
 
@@ -38,14 +38,11 @@ namespace ModControlPanel.Internals.ControlPanel {
 		private IList<UITextPanelButton> TabButtons = new List<UITextPanelButton>();
 		private IList<bool> TabButtonHover = new List<bool>();
 
-
 		////
 
-		private UITheme Theme = UITheme.Vanilla;
+		private UITheme Theme = null;
 		private UIElement OuterContainer = null;
 		private UIPanel InnerContainer = null;
-
-		////
 
 		private bool IsInitialized = false;
 		private bool HasClicked = false;
@@ -53,29 +50,24 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
+		public bool IsOpen { get; private set; } = false;
+
 		public string CurrentTabName { get; private set; } = "";
 
+		////
+
 		public UIControlPanelTab CurrentTab => this.Tabs.GetOrDefault( this.CurrentTabName );
-		
-		public bool IsOpen { get; private set; }
 
 
 
 		////////////////
 
-		public UIControlPanel() {
-			this.CurrentTabName = UIControlPanel.DefaultTabName;
-			this.Tabs[ this.CurrentTabName ] = new UIWelcomeControlPanelTab( this.Theme );
-			this.TabTitleOrder[ this.CurrentTabName ] = this.TabTitleOrder.Count;
-
-			this.IsOpen = false;
-			this.InitializeToggler();
-		}
-
 		void ILoadable.OnModsLoad() { }
 
 		void ILoadable.OnPostModsLoad() {
-			this.InitializeSingleton();
+			if( !Main.dedServ && Main.netMode != NetmodeID.Server ) {
+				this.InitializeSingleton();
+			}
 		}
 
 		void ILoadable.OnModsUnload() { }
@@ -130,31 +122,40 @@ namespace ModControlPanel.Internals.ControlPanel {
 		private void ApplyTabButtonMouseInteractivity( int idx ) {
 			UITextPanelButton button = this.TabButtons[idx];
 
-			if( !button.GetOuterDimensions().ToRectangle().Contains( Main.mouseX, Main.mouseY ) ) {
-				if( this.TabButtonHover[idx] ) {
-					this.TabButtonHover[idx] = false;
-
-					Timers.RunNow( () => {
-						button.MouseOut( new UIMouseEvent( button, new Vector2( Main.mouseX, Main.mouseY ) ) );
-					} );
-				}
-				return;
+			if( button.GetOuterDimensions().ToRectangle().Contains(Main.mouseX, Main.mouseY) ) {
+				this.ApplyTabButtonMouseOver( idx );
+			} else {
+				this.ApplyTabButtonMouseOut( idx );
 			}
+		}
+
+		private void ApplyTabButtonMouseOver( int idx ) {
+			UITextPanelButton button = this.TabButtons[idx];
+			var evt = new UIMouseEvent( button, new Vector2( Main.mouseX, Main.mouseY ) );
 
 			if( !this.TabButtonHover[idx] ) {
 				this.TabButtonHover[idx] = true;
+
 				ReflectionLibraries.Set( button, "_isMouseHovering", true );
+
+				Timers.RunNow( () => button.MouseOver(evt) );
 			}
-
-			var evt = new UIMouseEvent( button, new Vector2( Main.mouseX, Main.mouseY ) );
-
-			Timers.RunNow( () => {
-				button.MouseOver( evt );
-			} );
-
+			
 			if( Main.mouseLeft && Main.mouseLeftRelease ) {
 				Timers.RunNow( () => {
-					button.Click( evt );
+					button.Click(evt);
+				} );
+			}
+		}
+
+		private void ApplyTabButtonMouseOut( int idx ) {
+			UITextPanelButton button = this.TabButtons[idx];
+
+			if( this.TabButtonHover[idx] ) {
+				this.TabButtonHover[idx] = false;
+
+				Timers.RunNow( () => {
+					button.MouseOut( new UIMouseEvent( button, new Vector2(Main.mouseX, Main.mouseY) ) );
 				} );
 			}
 		}
