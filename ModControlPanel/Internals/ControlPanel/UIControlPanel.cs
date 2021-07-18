@@ -41,6 +41,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 		////
 
 		private UITheme Theme = null;
+
 		private UIElement OuterContainer = null;
 		private UIPanel MidContainer = null;
 		private UIPanel InnerContainer = null;

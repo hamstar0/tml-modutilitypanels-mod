@@ -3,8 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.UI;
 using ModLibsUI.Classes.UI.Theme;
-using ModControlPanel.Internals.ControlPanel.ModControlPanel;
 using ModLibsUI.Classes.UI.Elements;
+using ModControlPanel.Internals.ControlPanel.ModControlPanel;
+
 
 namespace ModControlPanel.Internals.ControlPanel {
 	/// @private
@@ -41,8 +42,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 			this.OuterContainer = new UIElement();
 			this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
 			this.OuterContainer.Height.Set( UIControlPanel.ContainerHeight + UIControlPanel.TabButtonHeight, 0f );
-			this.OuterContainer.MaxWidth.Set( UIControlPanel.ContainerWidth, 0f );
-			this.OuterContainer.MaxHeight.Set( UIControlPanel.ContainerHeight, 0f );
+			//this.OuterContainer.MaxWidth.Set( UIControlPanel.ContainerWidth, 0f );
+			//this.OuterContainer.MaxHeight.Set( UIControlPanel.ContainerHeight, 0f );
 			this.OuterContainer.HAlign = 0f;
 			//this.MainElement.BackgroundColor = ControlPanelUI.MainBgColor;
 			//this.MainElement.BorderColor = ControlPanelUI.MainEdgeColor;
@@ -57,6 +58,19 @@ namespace ModControlPanel.Internals.ControlPanel {
 			this.MidContainer.Height.Set( 0f, 1f );
 			this.MidContainer.HAlign = 0f;
 			this.OuterContainer.Append( (UIElement)this.MidContainer );
+
+			var closeButton = new UITextPanelButton( this.Theme, "X" );
+			closeButton.Top.Set( -24f, 0f );
+			closeButton.Left.Set( -32f, 1f );
+			closeButton.Width.Set( 24f, 0f );
+			closeButton.Height.Set( 24f, 0f );
+			closeButton.OnMouseOver += ( _, __ ) => this.Theme.ApplyButtonLit( closeButton );
+			closeButton.OnMouseOut += ( _, __ ) => this.Theme.ApplyButton( closeButton );
+			closeButton.OnClick += ( _, __ ) => {
+				this.Close();
+				Main.PlaySound( SoundID.MenuClose );
+			};
+			this.MidContainer.Append( closeButton );
 
 			this.InnerContainer = this.CurrentTab;
 			this.InnerContainer.Width.Set( 0f, 1f );

@@ -1,5 +1,4 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
@@ -20,7 +19,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 
-			this.AddTabCloseButton( title );
 			this.AddTabButton( title );
 		}
 
@@ -38,29 +36,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 
 		////////////////
-
-		private void AddTabCloseButton( string title ) {
-			UIControlPanelTab tab = this.Tabs[title];
-			var closeButton = new UITextPanelButton( tab.Theme, "X" );
-
-			closeButton.Top.Set( -8f, 0f );
-			closeButton.Left.Set( -16f, 1f );
-			closeButton.Width.Set( 24f, 0f );
-			closeButton.Height.Set( 24f, 0f );
-
-			closeButton.OnClick += ( _, __ ) => {
-				this.Close();
-				Main.PlaySound( SoundID.MenuClose );
-			};
-			closeButton.OnMouseOver += ( _, __ ) => {
-				tab.Theme.ApplyButtonLit( closeButton );
-			};
-			closeButton.OnMouseOut += ( _, __ ) => {
-				tab.Theme.ApplyButton( closeButton );
-			};
-
-			tab.Append( closeButton );
-		}
 
 		private void AddTabButton( string title ) {
 			UIControlPanelTab tab = this.Tabs[ title ];
@@ -103,12 +78,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 
-			if( tab.CustomWidth.HasValue ) {
-				this.OuterContainer.Width.Set( tab.CustomWidth.Value, 0f );
-			} else {
-				this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
-			}
-
 			this.MidContainer.RemoveChild( this.InnerContainer );
 			this.InnerContainer.Remove();
 
@@ -120,6 +89,15 @@ namespace ModControlPanel.Internals.ControlPanel {
 				tab.Initialize();
 			}
 
+			if( tab.CustomWidth.HasValue ) {
+				this.OuterContainer.Width.Set( tab.CustomWidth.Value, 0f );
+			} else {
+				this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
+			}
+
+			this.RecalculateContainerDimensions();
+
+			this.Recalculate();
 			this.Recalculate();
 			this.OuterContainer.Recalculate();
 			this.InnerContainer.Recalculate();
