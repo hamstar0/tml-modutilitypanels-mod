@@ -46,7 +46,7 @@ namespace ModControlPanel.Services.UI.ControlPanel {
 				cp.Open();
 			}
 
-			cp.ChangeToTab( tabName );
+			cp.ChangeToTabIf( tabName );
 		}
 
 

@@ -24,6 +24,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 		public static int TabButtonWidth => 160;
 		public static int TabButtonHeight => 24;
 
+		public static Color DefaultTabButtonColor { get; private set; }
+
 
 
 		////////////////
@@ -36,7 +38,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 		private IDictionary<string, int> TabTitleOrder = new Dictionary<string, int>();
 
 		private IList<UITextPanelButton> TabButtons = new List<UITextPanelButton>();
-		private IList<bool> TabButtonHover = new List<bool>();
+		private IDictionary<string, UITextPanelButton> TabButtonsByName = new Dictionary<string, UITextPanelButton>();
+		private IDictionary<string, bool> TabButtonHover = new Dictionary<string, bool>();
 
 		////
 
@@ -110,9 +113,10 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		public override void Draw( SpriteBatch sb ) {
 			if( !this.IsOpen ) { return; }
+			
 
-			for( int i=0; i<this.TabButtons.Count; i++ ) {
-				this.ApplyTabButtonMouseInteractivity( i );
+			foreach( string tabName in this.TabButtonsByName.Keys ) {
+				this.ApplyTabButtonMouseInteractivity( tabName );
 			}
 
 			base.Draw( sb );
@@ -121,22 +125,28 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
-		private void ApplyTabButtonMouseInteractivity( int idx ) {
-			UITextPanelButton button = this.TabButtons[idx];
+		private void ApplyTabButtonMouseInteractivity( string tabName ) {
+			UITextPanelButton button = this.TabButtonsByName[ tabName ];
 
 			if( button.GetOuterDimensions().ToRectangle().Contains(Main.mouseX, Main.mouseY) ) {
-				this.ApplyTabButtonMouseOver( idx );
+				this.ApplyTabButtonMouseOver( tabName );
 			} else {
-				this.ApplyTabButtonMouseOut( idx );
+				this.ApplyTabButtonMouseOut( tabName );
+			}
+
+			if( tabName == this.CurrentTabName ) {
+				button.TextColor = Color.Yellow;
+			} else {
+				button.TextColor = UIControlPanel.DefaultTabButtonColor;
 			}
 		}
 
-		private void ApplyTabButtonMouseOver( int idx ) {
-			UITextPanelButton button = this.TabButtons[idx];
+		private void ApplyTabButtonMouseOver( string tabName ) {
+			UITextPanelButton button = this.TabButtonsByName[tabName];
 			var evt = new UIMouseEvent( button, new Vector2( Main.mouseX, Main.mouseY ) );
 
-			if( !this.TabButtonHover[idx] ) {
-				this.TabButtonHover[idx] = true;
+			if( !this.TabButtonHover[tabName] ) {
+				this.TabButtonHover[tabName] = true;
 
 				ReflectionLibraries.Set( button, "_isMouseHovering", true );
 
@@ -150,11 +160,11 @@ namespace ModControlPanel.Internals.ControlPanel {
 			}
 		}
 
-		private void ApplyTabButtonMouseOut( int idx ) {
-			UITextPanelButton button = this.TabButtons[idx];
+		private void ApplyTabButtonMouseOut( string tabName ) {
+			UITextPanelButton button = this.TabButtonsByName[tabName];
 
-			if( this.TabButtonHover[idx] ) {
-				this.TabButtonHover[idx] = false;
+			if( this.TabButtonHover[tabName] ) {
+				this.TabButtonHover[tabName] = false;
 
 				Timers.RunNow( () => {
 					button.MouseOut( new UIMouseEvent( button, new Vector2(Main.mouseX, Main.mouseY) ) );

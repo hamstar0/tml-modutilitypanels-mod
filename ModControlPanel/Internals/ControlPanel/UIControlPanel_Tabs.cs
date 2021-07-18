@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
@@ -49,7 +50,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 			button.Width.Set( UIControlPanel.TabButtonWidth, 0f );
 			button.Height.Set( UIControlPanel.TabButtonHeight, 0f );
 			button.OnClick += ( _, __ ) => {
-				this.ChangeToTab( title );
+				this.ChangeToTabIf( title );
 			};
 
 			this.MidContainer.Append( button );
@@ -59,13 +60,14 @@ namespace ModControlPanel.Internals.ControlPanel {
 			//
 
 			this.TabButtons.Add( button );
-			this.TabButtonHover.Add( false );
+			this.TabButtonsByName[ title ] = button;
+			this.TabButtonHover[ title ] = false;
 		}
 
 
 		////////////////
 
-		public bool ChangeToTab( string tabName ) {
+		public bool ChangeToTabIf( string tabName ) {
 			if( tabName == this.CurrentTabName ) {
 				return true;
 			}
@@ -75,6 +77,16 @@ namespace ModControlPanel.Internals.ControlPanel {
 				return false;
 			}
 
+			this.ChangeToTabElement( tab );
+
+			this.CurrentTabName = tabName;
+			
+			return true;
+		}
+
+		////
+
+		public void ChangeToTabElement( UIControlPanelTab tab ) {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 
@@ -89,6 +101,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 				tab.Initialize();
 			}
 
+			//
+
 			if( tab.CustomWidth.HasValue ) {
 				this.OuterContainer.Width.Set( tab.CustomWidth.Value, 0f );
 			} else {
@@ -101,10 +115,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			this.Recalculate();
 			this.OuterContainer.Recalculate();
 			this.InnerContainer.Recalculate();
-
-			this.CurrentTabName = tabName;
-			
-			return true;
 		}
 	}
 }

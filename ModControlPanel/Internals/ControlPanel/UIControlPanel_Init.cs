@@ -85,6 +85,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 			foreach( var kv in this.Tabs ) {
 				this.InitializeTab( kv.Key, kv.Value );
 			}
+
+			UIControlPanel.DefaultTabButtonColor = this.Theme.ButtonTextColor;
 		}
 	}
 }
