@@ -34,9 +34,11 @@ namespace ModControlPanel.Internals.ControlPanel.ModControlPanel {
 
 		////////////////
 
-		public UIWelcomeControlPanelTab( UITheme theme ) {
+		public UIWelcomeControlPanelTab( UITheme theme ) : base( theme ) {
 			this.Theme = theme;
 		}
+
+		////////////////
 
 		public void AddCloseButton( UITextPanelButton button ) {
 			this.Append( button );

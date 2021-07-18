@@ -1,21 +1,25 @@
 ﻿using Terraria;
-using Terraria.GameContent.UI.Elements;
-using Terraria.ID;
-using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
 using ModLibsUI.Classes.UI.Theme;
+using ModLibsUI.Classes.UI.Elements;
 
 
 namespace ModControlPanel.Internals.ControlPanel {
 	/// @private
-	public abstract class UIControlPanelTab : UIPanel {
-		/// @private
-		public UITheme Theme { get; protected set; }
+	public abstract class UIControlPanelTab : UIThemedPanel {
 		/// @private
 		public bool IsInitialized { get; private set; }
 
+		public int? CustomWidth { get; protected set; }
 
+
+
+		////////////////
+
+		protected UIControlPanelTab( UITheme theme, int? customWidth = null ) : base( theme, false ) {
+			this.CustomWidth = customWidth;
+		}
 
 		////////////////
 

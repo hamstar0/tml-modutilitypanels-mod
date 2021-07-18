@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.UI;
 using ModLibsUI.Classes.UI.Theme;
 using ModControlPanel.Internals.ControlPanel.ModControlPanel;
-
+using ModLibsUI.Classes.UI.Elements;
 
 namespace ModControlPanel.Internals.ControlPanel {
 	/// @private
@@ -40,7 +40,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 		private void InitializeComponents() {
 			this.OuterContainer = new UIElement();
 			this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
-			this.OuterContainer.Height.Set( UIControlPanel.ContainerHeight, 0f );
+			this.OuterContainer.Height.Set( UIControlPanel.ContainerHeight + UIControlPanel.TabButtonHeight, 0f );
 			this.OuterContainer.MaxWidth.Set( UIControlPanel.ContainerWidth, 0f );
 			this.OuterContainer.MaxHeight.Set( UIControlPanel.ContainerHeight, 0f );
 			this.OuterContainer.HAlign = 0f;
@@ -50,10 +50,19 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 			this.RecalculateContainerDimensions();
 
+			this.MidContainer = new UIThemedPanel( this.Theme, false );
+			this.MidContainer.SetPadding( 0f );
+			this.MidContainer.PaddingTop = UIControlPanel.TabButtonHeight;
+			this.MidContainer.Width.Set( 0f, 1f );
+			this.MidContainer.Height.Set( 0f, 1f );
+			this.MidContainer.HAlign = 0f;
+			this.OuterContainer.Append( (UIElement)this.MidContainer );
+
 			this.InnerContainer = this.CurrentTab;
 			this.InnerContainer.Width.Set( 0f, 1f );
 			this.InnerContainer.Height.Set( 0f, 1f );
-			this.OuterContainer.Append( (UIElement)this.InnerContainer );
+			this.InnerContainer.PaddingBottom = UIControlPanel.TabButtonHeight;
+			this.MidContainer.Append( (UIElement)this.InnerContainer );
 
 			this.InnerContainer.Initialize();
 			

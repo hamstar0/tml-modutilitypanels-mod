@@ -77,7 +77,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 				this.ChangeToTab( title );
 			};
 
-			this.OuterContainer.Append( button );
+			this.MidContainer.Append( button );
 
 			this.OuterContainer.Recalculate();
 
@@ -103,11 +103,18 @@ namespace ModControlPanel.Internals.ControlPanel {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 
-			this.OuterContainer.RemoveChild( this.InnerContainer );
+			if( tab.CustomWidth.HasValue ) {
+				this.OuterContainer.Width.Set( tab.CustomWidth.Value, 0f );
+			} else {
+				this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
+			}
+
+			this.MidContainer.RemoveChild( this.InnerContainer );
 			this.InnerContainer.Remove();
 
 			this.InnerContainer = tab;
-			this.OuterContainer.Append( this.InnerContainer );
+			this.InnerContainer.PaddingBottom = UIControlPanel.TabButtonHeight;
+			this.MidContainer.Append( this.InnerContainer );
 
 			if( !tab.IsInitialized ) {
 				tab.Initialize();
