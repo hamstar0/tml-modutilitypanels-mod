@@ -61,7 +61,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 			var closeButton = new UITextPanelButton( this.Theme, "X" );
 			closeButton.Top.Set( -24f, 0f );
-			closeButton.Left.Set( -32f, 1f );
+			closeButton.Left.Set( -24f, 1f );
 			closeButton.Width.Set( 24f, 0f );
 			closeButton.Height.Set( 24f, 0f );
 			closeButton.OnMouseOver += ( _, __ ) => this.Theme.ApplyButtonLit( closeButton );
