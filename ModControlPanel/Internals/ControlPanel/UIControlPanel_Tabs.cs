@@ -1,10 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
+﻿using Terraria;
 using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
-using ModLibsUI.Classes.UI.Elements;
 
 
 namespace ModControlPanel.Internals.ControlPanel {
@@ -33,35 +31,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			if( this.IsInitialized ) {
 				this.InitializeTab( title, tab );
 			}
-		}
-
-
-		////////////////
-
-		private void AddTabButton( string title ) {
-			UIControlPanelTab tab = this.Tabs[ title ];
-			int idx = this.TabTitleOrder[ title ];
-
-			int posX = UIControlPanel.TabButtonWidth * idx;
-
-			var button = new UITextPanelButton( tab.Theme, title );
-			button.Left.Set( (float)posX, 0f );
-			button.Top.Set( -UIControlPanel.TabButtonHeight, 0f );
-			button.Width.Set( UIControlPanel.TabButtonWidth, 0f );
-			button.Height.Set( UIControlPanel.TabButtonHeight, 0f );
-			button.OnClick += ( _, __ ) => {
-				this.ChangeToTabIf( title );
-			};
-
-			this.MidContainer.Append( button );
-
-			this.OuterContainer.Recalculate();
-
-			//
-
-			this.TabButtons.Add( button );
-			this.TabButtonsByName[ title ] = button;
-			this.TabButtonHover[ title ] = false;
 		}
 
 

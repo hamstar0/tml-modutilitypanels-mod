@@ -6,7 +6,7 @@ using ModLibsCore.Libraries.Debug;
 
 namespace ModControlPanel {
 	/// @private
-	partial class ModControlPanelMod : Mod {
+	public partial class ModControlPanelMod : Mod {
 		public static ModControlPanelMod Instance { get; private set; }
 
 
@@ -25,6 +25,11 @@ namespace ModControlPanel {
 		public bool MouseInterface { get; private set; }
 
 
+		////////////////
+
+		public event Action OnControlPanelInitialize;
+
+
 
 		////////////////
 
@@ -32,6 +37,12 @@ namespace ModControlPanel {
 			ModControlPanelMod.Instance = this;
 
 			this.ControlPanelHotkey = this.RegisterHotKey( "Toggle Control Panel", "O" );
+		}
+
+		////
+
+		internal void PostInitializeControlPanel() {
+			this.OnControlPanelInitialize?.Invoke();
 		}
 
 		////

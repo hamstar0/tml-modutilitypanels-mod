@@ -8,8 +8,6 @@ using Terraria.GameContent.UI.Elements;
 using ModLibsCore.Classes.Loadable;
 using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
-using ModLibsCore.Libraries.DotNET.Reflection;
-using ModLibsCore.Services.Timers;
 using ModLibsUI.Classes.UI.Elements;
 using ModLibsUI.Classes.UI.Theme;
 
@@ -72,6 +70,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 		void ILoadable.OnPostModsLoad() {
 			if( !Main.dedServ && Main.netMode != NetmodeID.Server ) {
 				this.InitializeSingleton();
+
+				ModControlPanelMod.Instance.PostInitializeControlPanel();
 			}
 		}
 
@@ -120,56 +120,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			}
 
 			base.Draw( sb );
-		}
-
-
-		////////////////
-
-		private void ApplyTabButtonMouseInteractivity( string tabName ) {
-			UITextPanelButton button = this.TabButtonsByName[ tabName ];
-
-			if( button.GetOuterDimensions().ToRectangle().Contains(Main.mouseX, Main.mouseY) ) {
-				this.ApplyTabButtonMouseOver( tabName );
-			} else {
-				this.ApplyTabButtonMouseOut( tabName );
-			}
-
-			if( tabName == this.CurrentTabName ) {
-				button.TextColor = Color.Yellow;
-			} else {
-				button.TextColor = UIControlPanel.DefaultTabButtonColor;
-			}
-		}
-
-		private void ApplyTabButtonMouseOver( string tabName ) {
-			UITextPanelButton button = this.TabButtonsByName[tabName];
-			var evt = new UIMouseEvent( button, new Vector2( Main.mouseX, Main.mouseY ) );
-
-			if( !this.TabButtonHover[tabName] ) {
-				this.TabButtonHover[tabName] = true;
-
-				ReflectionLibraries.Set( button, "_isMouseHovering", true );
-
-				Timers.RunNow( () => button.MouseOver(evt) );
-			}
-			
-			if( Main.mouseLeft && Main.mouseLeftRelease ) {
-				Timers.RunNow( () => {
-					button.Click(evt);
-				} );
-			}
-		}
-
-		private void ApplyTabButtonMouseOut( string tabName ) {
-			UITextPanelButton button = this.TabButtonsByName[tabName];
-
-			if( this.TabButtonHover[tabName] ) {
-				this.TabButtonHover[tabName] = false;
-
-				Timers.RunNow( () => {
-					button.MouseOut( new UIMouseEvent( button, new Vector2(Main.mouseX, Main.mouseY) ) );
-				} );
-			}
 		}
 	}
 }

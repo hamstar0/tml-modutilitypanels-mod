@@ -11,7 +11,7 @@ using ModControlPanel.Internals.ControlPanel;
 
 namespace ModControlPanel {
 	/// @private
-	partial class ModControlPanelMod : Mod {
+	public partial class ModControlPanelMod : Mod {
 		public override void ModifyInterfaceLayers( List<GameInterfaceLayer> layers ) {
 			int idx = layers.FindIndex( layer => layer.Name.Equals( "Vanilla: Mouse Text" ) );
 			if( idx == -1 ) { return; }
