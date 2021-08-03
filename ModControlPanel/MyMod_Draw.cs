@@ -43,7 +43,7 @@ namespace ModControlPanel {
 				if( !ModControlPanelConfig.Instance.DisableControlPanel ) {
 					cp.UpdateToggler();
 
-					cp.DrawToggler( sb );
+					cp.DrawTogglerIf( sb );
 				}
 
 				if( this.LastSeenCPScreenWidth != Main.screenWidth || this.LastSeenCPScreenHeight != Main.screenHeight ) {

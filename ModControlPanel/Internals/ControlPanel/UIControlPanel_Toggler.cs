@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
@@ -42,7 +43,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 		////////////////
 
 		public bool IsTogglerShown() {
-			return Main.playerInventory;
+			return Main.playerInventory || this.AlertTabs.Values.Any( p=>p );
 		}
 
 
@@ -59,8 +60,10 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
-		public void DrawToggler( SpriteBatch sb ) {
-			if( !this.IsTogglerShown() ) { return; }
+		public void DrawTogglerIf( SpriteBatch sb ) {
+			if( !this.IsTogglerShown() ) {
+				return;
+			}
 
 			bool alertShown = this.IsTogglerUpdateAlertShown( out string _ );
 			Texture2D tex;

@@ -13,21 +13,27 @@ using ModLibsGeneral.Services.AnimatedColor;
 namespace ModControlPanel.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState {
-		internal ISet<string> AlertTabs = new HashSet<string>();
+		private IDictionary<string, bool> AlertTabs = new Dictionary<string, bool>();
 
 
 
 		////////////////
 
-		public void AddTabAlert( string tabName ) {
-			this.AlertTabs.Add( tabName );
+		public void AddTabAlert( string tabName, bool isPriority=false ) {
+			this.AlertTabs[ tabName ] = isPriority;
 		}
 
 
 		////////////////
 
 		public bool IsTogglerUpdateAlertShown( out string tabName ) {
-			tabName = this.AlertTabs.FirstOrDefault();
+			tabName = this.AlertTabs
+					.Where( kv => kv.Value )
+					.Select( kv => kv.Key )
+					.FirstOrDefault()
+				?? this.AlertTabs
+					.Select( kv => kv.Key )
+					.FirstOrDefault();
 
 			return this.AlertTabs.Count > 0;
 		}
