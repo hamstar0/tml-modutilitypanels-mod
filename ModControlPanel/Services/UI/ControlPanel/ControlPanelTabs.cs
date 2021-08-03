@@ -84,5 +84,12 @@ namespace ModControlPanel.Services.UI.ControlPanel {
 			var cp = ModContent.GetInstance<UIControlPanel>();
 			cp?.AddTabAlert( tabName, isPriority );
 		}
+
+		/// <summary></summary>
+		/// <param name="tabName"></param>
+		public static void ClearTabAlert( string tabName ) {
+			var cp = ModContent.GetInstance<UIControlPanel>();
+			cp?.ClearTabAlert( tabName );
+		}
 	}
 }

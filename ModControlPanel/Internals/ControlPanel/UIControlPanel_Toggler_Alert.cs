@@ -23,6 +23,10 @@ namespace ModControlPanel.Internals.ControlPanel {
 			this.AlertTabs[ tabName ] = isPriority;
 		}
 
+		public void ClearTabAlert( string tabName ) {
+			this.AlertTabs.Remove( tabName );
+		}
+
 
 		////////////////
 
