@@ -41,6 +41,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
+		 private int PriorityAlertAnim = 0;
+
 		private void DrawTogglerAlert( SpriteBatch sb ) {
 			Color color = AnimatedColors.Alert?.CurrentColor ?? Color.White;
 			Vector2 pos = UIControlPanel.TogglerPosition;
@@ -71,6 +73,30 @@ namespace ModControlPanel.Internals.ControlPanel {
 				effects: SpriteEffects.None,
 				layerDepth: 1f
 			);
+
+			if( this.AlertTabs.Any(kv=>kv.Value) ) {
+				Texture2D tex;
+
+				this.PriorityAlertAnim++;
+
+				if( this.PriorityAlertAnim == 0 ) {
+					tex = UIControlPanel.AlertBorder1;
+				} else if( this.PriorityAlertAnim == 1 ) {
+					tex = UIControlPanel.AlertBorder2;
+				} else if( this.PriorityAlertAnim == 2 ) {
+					this.PriorityAlertAnim = 0;
+					tex = UIControlPanel.AlertBorder3;
+				} else {
+					this.PriorityAlertAnim = 0;
+					tex = UIControlPanel.AlertBorder2;
+				}
+
+				sb.Draw(
+					texture: tex,
+					position: pos - new Vector2(1, 1),
+					color: Color.White
+				);
+			}
 		}
 	}
 }

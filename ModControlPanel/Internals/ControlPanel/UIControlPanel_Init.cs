@@ -15,6 +15,9 @@ namespace ModControlPanel.Internals.ControlPanel {
 		
 		public static Texture2D ControlPanelIcon { get; private set; }
 		public static Texture2D ControlPanelIconLit { get; private set; }
+		public static Texture2D AlertBorder1 { get; private set; }
+		public static Texture2D AlertBorder2 { get; private set; }
+		public static Texture2D AlertBorder3 { get; private set; }
 
 
 
@@ -25,6 +28,9 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 			UIControlPanel.ControlPanelIcon = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIcon" );
 			UIControlPanel.ControlPanelIconLit = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIconLit" );
+			UIControlPanel.AlertBorder1 = mymod.GetTexture( "Internals/ControlPanel/AlertBorder1" );
+			UIControlPanel.AlertBorder2 = mymod.GetTexture( "Internals/ControlPanel/AlertBorder2" );
+			UIControlPanel.AlertBorder3 = mymod.GetTexture( "Internals/ControlPanel/AlertBorder3" );
 
 			//
 

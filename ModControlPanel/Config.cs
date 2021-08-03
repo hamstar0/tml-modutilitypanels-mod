@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System.ComponentModel;
+using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
@@ -40,7 +41,8 @@ namespace ModControlPanel {
 		[Tooltip( "Control panel icon's X coordinate on screen. Negative values align the button from the right edge." )]
 		[Increment( 10 )]
 		[Range( -4096, 4096 )]
-		public int ControlPanelIconX { get; set; } = 0;
+		[DefaultValue( 1 )]
+		public int ControlPanelIconX { get; set; } = 1;
 
 		/// <summary>
 		/// Control panel icon's Y coordinate on screen. Negative values align the button from the bottom edge.
@@ -49,6 +51,7 @@ namespace ModControlPanel {
 		[Tooltip( "Control panel icon's Y coordinate on screen. Negative values align the button from the bottom edge." )]
 		[Increment( 10 )]
 		[Range( -2160, 2160 )]
-		public int ControlPanelIconY { get; set; } = 0;
+		[DefaultValue( 1 )]
+		public int ControlPanelIconY { get; set; } = 1;
 	}
 }
