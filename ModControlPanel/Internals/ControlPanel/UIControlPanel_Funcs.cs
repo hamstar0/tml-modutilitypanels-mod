@@ -27,6 +27,8 @@ namespace ModControlPanel.Internals.ControlPanel {
 			//this.Recalculate();
 			this.RecalculateMe();
 
+			this.ClearTabAlert( this.CurrentTabName );
+
 			Timers.RunNow( this.RecalculateMe );
 		}
 
