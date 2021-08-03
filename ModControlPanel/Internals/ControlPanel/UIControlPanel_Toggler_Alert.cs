@@ -19,7 +19,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 		////////////////
 
-		public void AddTabAlert( string tabName, bool isPriority=false ) {
+		public void AddTabAlert( string tabName, bool isPriority ) {
 			this.AlertTabs[ tabName ] = isPriority;
 		}
 

@@ -79,9 +79,10 @@ namespace ModControlPanel.Services.UI.ControlPanel {
 		/// Indicates that a given tab has important new information to be seen immediate.y
 		/// </summary>
 		/// <param name="tabName"></param>
-		public static void AddTabAlert( string tabName ) {
+		/// <param name="isPriority"></param>
+		public static void AddTabAlert( string tabName, bool isPriority ) {
 			var cp = ModContent.GetInstance<UIControlPanel>();
-			cp?.AddTabAlert( tabName );
+			cp?.AddTabAlert( tabName, isPriority );
 		}
 	}
 }
