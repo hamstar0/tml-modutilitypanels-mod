@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.UI;
@@ -92,7 +93,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 				this.InitializeTab( kv.Key, kv.Value );
 			}
 
-			UIControlPanel.DefaultTabButtonColor = this.Theme.ButtonTextColor;
+			UIControlPanel.DefaultTabButtonColor = Color.Gray;	//this.Theme.ButtonTextColor;
 		}
 	}
 }

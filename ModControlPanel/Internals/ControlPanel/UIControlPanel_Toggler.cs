@@ -80,7 +80,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 			sb.Draw( tex, UIControlPanel.TogglerPosition, null, color );
 
 			if( alertShown ) {
-				this.DrawTogglerAlert( sb );
+				this.DrawTogglerAlert( sb, (float)color.A / 255f );
 			}
 
 			if( this.IsTogglerLit ) {
@@ -92,11 +92,15 @@ namespace ModControlPanel.Internals.ControlPanel {
 				//		color: AnimatedColors.Alert.CurrentColor
 				//	);
 				//} else {
-				sb.DrawString(
-					spriteFont: Main.fontMouseText,
+				Utils.DrawBorderStringFourWay(
+					sb: sb,
+					font: Main.fontMouseText,
 					text: "Mod Control Panel",
-					position: new Vector2( Main.mouseX + 8, Main.mouseY + 8 ),
-					color: Color.White
+					x: Main.mouseX + 8,
+					y: Main.mouseY + 8,
+					textColor: new Color( Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor ),
+					borderColor: Color.Black,
+					origin: default
 				);
 				//}
 			}

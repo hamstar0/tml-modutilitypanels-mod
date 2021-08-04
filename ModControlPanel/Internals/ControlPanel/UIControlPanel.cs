@@ -117,6 +117,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 			foreach( string tabName in this.TabButtonsByName.Keys ) {
 				this.ApplyTabButtonMouseInteractivity( tabName );
+				this.UpdateTabButtonStyling( tabName );
 			}
 
 			base.Draw( sb );

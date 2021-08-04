@@ -48,12 +48,6 @@ namespace ModControlPanel.Internals.ControlPanel {
 			} else {
 				this.ApplyTabButtonMouseOut( tabName );
 			}
-
-			if( tabName == this.CurrentTabName ) {
-				button.TextColor = Color.Yellow;
-			} else {
-				button.TextColor = UIControlPanel.DefaultTabButtonColor;
-			}
 		}
 
 		private void ApplyTabButtonMouseOver( string tabName ) {
@@ -84,6 +78,18 @@ namespace ModControlPanel.Internals.ControlPanel {
 				Timers.RunNow( () => {
 					button.MouseOut( new UIMouseEvent( button, new Vector2(Main.mouseX, Main.mouseY) ) );
 				} );
+			}
+		}
+
+		private void UpdateTabButtonStyling( string tabName ) {
+			UITextPanelButton button = this.TabButtonsByName[tabName];
+
+			if( this.AlertTabs.ContainsKey( tabName ) ) {
+				button.TextColor = Color.Yellow;
+			} else if( tabName == this.CurrentTabName ) {
+				button.TextColor = Color.White;
+			} else {
+				button.TextColor = UIControlPanel.DefaultTabButtonColor;
 			}
 		}
 	}
