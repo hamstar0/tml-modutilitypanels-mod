@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ModControlPanel.Internals.ControlPanel;
+using ModControlPanel.Services.UI.ControlPanel;
 
 
 namespace ModControlPanel.Commands {
@@ -30,7 +30,7 @@ namespace ModControlPanel.Commands {
 			if( ModControlPanelConfig.Instance.DisableControlPanel ) {
 				caller.Reply( "Control panel disabled.", Color.Red );
 			} else {
-				ModContent.GetInstance<UIControlPanel>().Open();
+				ControlPanelTabs.OpenTab( ControlPanelTabs.GetCurrentTab() );
 			}
 		}
 	}

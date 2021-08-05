@@ -47,6 +47,8 @@ namespace ModControlPanel.Services.UI.ControlPanel {
 			}
 
 			cp.ChangeToTabIf( tabName );
+
+			cp.ClearTabAlert( tabName );
 		}
 
 

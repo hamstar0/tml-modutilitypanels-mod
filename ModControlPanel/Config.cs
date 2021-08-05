@@ -41,8 +41,8 @@ namespace ModControlPanel {
 		[Tooltip( "Control panel icon's X coordinate on screen. Negative values align the button from the right edge." )]
 		[Increment( 10 )]
 		[Range( -4096, 4096 )]
-		[DefaultValue( 1 )]
-		public int ControlPanelIconX { get; set; } = 1;
+		[DefaultValue( 2 )]
+		public int ControlPanelIconX { get; set; } = 2;
 
 		/// <summary>
 		/// Control panel icon's Y coordinate on screen. Negative values align the button from the bottom edge.
@@ -51,7 +51,7 @@ namespace ModControlPanel {
 		[Tooltip( "Control panel icon's Y coordinate on screen. Negative values align the button from the bottom edge." )]
 		[Increment( 10 )]
 		[Range( -2160, 2160 )]
-		[DefaultValue( 1 )]
-		public int ControlPanelIconY { get; set; } = 1;
+		[DefaultValue( 2 )]
+		public int ControlPanelIconY { get; set; } = 2;
 	}
 }

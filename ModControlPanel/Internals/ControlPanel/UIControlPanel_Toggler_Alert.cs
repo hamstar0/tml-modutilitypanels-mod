@@ -60,10 +60,10 @@ namespace ModControlPanel.Internals.ControlPanel {
 			Color color = AnimatedColors.Alert?.CurrentColor
 				?? Color.White;
 
-			float scale = 1.35f;
+			float scale = 1.15f;
 
 			Vector2 pos = UIControlPanel.TogglerPosition;
-			pos.X += 10f;
+			pos.X += 11f;
 			pos.Y += 14f;
 
 			Vector2 dim = Main.fontMouseText.MeasureString( "!" );
@@ -103,7 +103,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 
 			sb.Draw(
 				texture: tex,
-				position: UIControlPanel.TogglerPosition - new Vector2( 1, 1 ),
+				position: UIControlPanel.TogglerPosition + new Vector2(-2f, -2f),
 				color: Color.White * opacity
 			);
 		}
