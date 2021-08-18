@@ -55,7 +55,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 
 		////
 
-		public void ChangeToTabElement( UIUtilityPanelsTab tab ) {
+		private void ChangeToTabElement( UIUtilityPanelsTab tab ) {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 

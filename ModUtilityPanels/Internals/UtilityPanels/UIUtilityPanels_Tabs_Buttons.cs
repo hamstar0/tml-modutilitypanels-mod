@@ -6,12 +6,13 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Reflection;
 using ModLibsCore.Services.Timers;
 using ModLibsUI.Classes.UI.Elements;
+using ModUtilityPanels.Services.UI.UtilityPanels;
 
 
 namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
 	partial class UIUtilityPanels : UIState, ILoadable {
-		private void AddTabButton( string title ) {
+		private UITextPanelButton AddTabButton( string title ) {
 			UIUtilityPanelsTab tab = this.Tabs[title];
 			int idx = this.TabTitleOrder[title];
 
@@ -23,7 +24,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 			button.Width.Set( UIUtilityPanels.TabButtonWidth, 0f );
 			button.Height.Set( UIUtilityPanels.TabButtonHeight, 0f );
 			button.OnClick += ( _, __ ) => {
-				this.ChangeToTabIf( title );
+				UtilityPanelsTabs.OpenTab( title );
 			};
 
 			this.MidContainer.Append( button );
@@ -35,6 +36,8 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 			this.TabButtons.Add( button );
 			this.TabButtonsByName[title] = button;
 			this.TabButtonHover[title] = false;
+
+			return button;
 		}
 
 
