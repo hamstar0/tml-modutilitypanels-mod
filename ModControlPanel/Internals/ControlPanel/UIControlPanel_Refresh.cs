@@ -3,7 +3,7 @@ using Terraria.UI;
 using ModLibsCore.Libraries.Debug;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState {
 		/*private bool _IsRecalculating = false;

@@ -5,7 +5,7 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	partial class UIControlPanel : UIState {
 		public UIControlPanelTab GetTab( string name ) {
 			return this.Tabs.GetOrDefault( name );

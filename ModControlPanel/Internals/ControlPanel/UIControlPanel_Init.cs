@@ -5,10 +5,10 @@ using Terraria.ID;
 using Terraria.UI;
 using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
-using ModControlPanel.Internals.ControlPanel.ModControlPanel;
+using ModUtilityPanels.Internals.ControlPanel.ModControlPanel;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState {
 		public static float ContainerWidth = 600f;
@@ -25,7 +25,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 		////////////////
 
 		private void InitializeSingleton() {
-			var mymod = ModControlPanelMod.Instance;
+			var mymod = ModUtilityPanelsMod.Instance;
 
 			UIControlPanel.ControlPanelIcon = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIcon" );
 			UIControlPanel.ControlPanelIconLit = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIconLit" );

@@ -4,17 +4,17 @@ using Terraria.ModLoader;
 using ModLibsCore.Libraries.Debug;
 
 
-namespace ModControlPanel {
+namespace ModUtilityPanels {
 	/// @private
-	public partial class ModControlPanelMod : Mod {
-		public static ModControlPanelMod Instance { get; private set; }
+	public partial class ModUtilityPanelsMod : Mod {
+		public static ModUtilityPanelsMod Instance { get; private set; }
 
 
 
 		////////////////
 
-		private int LastSeenCPScreenWidth = -1;
-		private int LastSeenCPScreenHeight = -1;
+		private int LastSeenUPScreenWidth = -1;
+		private int LastSeenUPScreenHeight = -1;
 
 		public ModHotKey ControlPanelHotkey = null;
 
@@ -34,14 +34,14 @@ namespace ModControlPanel {
 		////////////////
 
 		public override void Load() {
-			ModControlPanelMod.Instance = this;
+			ModUtilityPanelsMod.Instance = this;
 
-			this.ControlPanelHotkey = this.RegisterHotKey( "Toggle Control Panel", "O" );
+			this.ControlPanelHotkey = this.RegisterHotKey( "Toggle Utility Panels", "O" );
 		}
 
 		////
 
-		internal void PostInitializeControlPanel() {
+		internal void PostInitializeUtilityPanels() {
 			this.OnControlPanelInitialize?.Invoke();
 		}
 
@@ -53,10 +53,10 @@ namespace ModControlPanel {
 
 				this.ControlPanelHotkey = null;
 			} catch( Exception e ) {
-				this.Logger.Warn( "!ModControlPanel.ModControlPanelMod.UnloadFull - " + e.ToString() ); //was Error(...)
+				this.Logger.Warn( "!ModUtilityPanels.ModModUtilityPanels.UnloadFull - " + e.ToString() ); //was Error(...)
 			}
 
-			ModControlPanelMod.Instance = null;
+			ModUtilityPanelsMod.Instance = null;
 		}
 	}
 }

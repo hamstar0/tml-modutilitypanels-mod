@@ -8,7 +8,7 @@ using ModLibsCore.Services.Timers;
 using ModLibsUI.Classes.UI.Elements;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState, ILoadable {
 		private void AddTabButton( string title ) {

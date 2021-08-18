@@ -6,10 +6,10 @@ using Terraria.UI;
 using ModLibsCore.Services.Hooks.LoadHooks;
 using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
-using ModControlPanel.Services.UI.ControlPanel;
+using ModUtilityPanels.Services.UI.ControlPanel;
 
 
-namespace ModControlPanel.Internals.ControlPanel.ModControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
 	partial class UIWelcomeControlPanelTab : UIControlPanelTab {
 		private static IList<string> SupportMessages = new List<string> {
 			"Buy me coffee for coding! :)",

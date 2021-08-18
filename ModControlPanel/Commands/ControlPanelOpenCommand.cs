@@ -2,10 +2,10 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ModControlPanel.Services.UI.ControlPanel;
+using ModUtilityPanels.Services.UI.ControlPanel;
 
 
-namespace ModControlPanel.Commands {
+namespace ModUtilityPanels.Commands {
 	/// @private
 	public class ControlPanelOpenCommand : ModCommand {
 		/// @private

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.Config;
 
 
-namespace ModControlPanel {
+namespace ModUtilityPanels {
 	/// <summary>
 	/// Defines Mod Control Panel config settings.
 	/// </summary>

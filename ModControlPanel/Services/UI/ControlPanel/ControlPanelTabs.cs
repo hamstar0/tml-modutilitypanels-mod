@@ -1,9 +1,9 @@
 ﻿using System;
 using Terraria.ModLoader;
-using ModControlPanel.Internals.ControlPanel;
+using ModUtilityPanels.Internals.ControlPanel;
 
 
-namespace ModControlPanel.Services.UI.ControlPanel {
+namespace ModUtilityPanels.Services.UI.ControlPanel {
 	/// <summary>
 	/// Supplies an interface to add to and manage control panel tabs. The control panel is accessible in the top left
 	/// corner (by default) when the player's inventory is displayed.

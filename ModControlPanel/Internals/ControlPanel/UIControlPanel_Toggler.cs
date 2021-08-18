@@ -6,10 +6,10 @@ using ReLogic.Graphics;
 using Terraria;
 using Terraria.UI;
 using ModLibsCore.Libraries.Debug;
-using ModControlPanel.Services.UI.ControlPanel;
+using ModUtilityPanels.Services.UI.ControlPanel;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState {
 		private static Vector2 TogglerPosition {

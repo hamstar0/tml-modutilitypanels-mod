@@ -4,11 +4,11 @@ using Terraria.GameInput;
 using Terraria.ModLoader;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
-using ModControlPanel.Services.UI.ControlPanel;
-using ModControlPanel.Internals.ControlPanel;
+using ModUtilityPanels.Services.UI.ControlPanel;
+using ModUtilityPanels.Internals.ControlPanel;
 
 
-namespace ModControlPanel {
+namespace ModUtilityPanels {
 	/// @private
 	partial class ModControlPanelPlayer : ModPlayer {
 		public override bool CloneNewInstances => false;
@@ -25,7 +25,7 @@ namespace ModControlPanel {
 		////////////////
 
 		public override void ProcessTriggers( TriggersSet triggersSet ) {
-			var mymod = ModControlPanelMod.Instance;
+			var mymod = ModUtilityPanelsMod.Instance;
 			var cp = ModContent.GetInstance<UIControlPanel>();
 
 			try {

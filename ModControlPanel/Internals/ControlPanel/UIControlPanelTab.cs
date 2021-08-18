@@ -5,7 +5,7 @@ using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	public abstract class UIControlPanelTab : UIThemedPanel {
 		/// @private

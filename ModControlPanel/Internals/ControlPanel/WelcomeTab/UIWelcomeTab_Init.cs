@@ -4,7 +4,7 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsUI.Classes.UI.Elements;
 
 
-namespace ModControlPanel.Internals.ControlPanel.ModControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
 	/// @private
 	partial class UIWelcomeControlPanelTab : UIControlPanelTab {
 		private void InitializeComponents() {

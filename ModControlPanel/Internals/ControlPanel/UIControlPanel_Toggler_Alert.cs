@@ -10,7 +10,7 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsGeneral.Services.AnimatedColor;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState {
 		private IDictionary<string, bool> AlertTabs = new Dictionary<string, bool>();

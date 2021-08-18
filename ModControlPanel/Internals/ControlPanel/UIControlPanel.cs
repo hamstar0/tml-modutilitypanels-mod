@@ -12,7 +12,7 @@ using ModLibsUI.Classes.UI.Elements;
 using ModLibsUI.Classes.UI.Theme;
 
 
-namespace ModControlPanel.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.ControlPanel {
 	/// @private
 	partial class UIControlPanel : UIState, ILoadable {
 		public const string DefaultTabName = "Welcome";
@@ -71,7 +71,7 @@ namespace ModControlPanel.Internals.ControlPanel {
 			if( !Main.dedServ && Main.netMode != NetmodeID.Server ) {
 				this.InitializeSingleton();
 
-				ModControlPanelMod.Instance.PostInitializeControlPanel();
+				ModUtilityPanelsMod.Instance.PostInitializeUtilityPanels();
 			}
 		}
 

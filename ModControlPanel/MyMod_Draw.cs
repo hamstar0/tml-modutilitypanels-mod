@@ -6,12 +6,12 @@ using Terraria.UI;
 using Terraria.ModLoader;
 using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.TModLoader;
-using ModControlPanel.Internals.ControlPanel;
+using ModUtilityPanels.Internals.ControlPanel;
 
 
-namespace ModControlPanel {
+namespace ModUtilityPanels {
 	/// @private
-	public partial class ModControlPanelMod : Mod {
+	public partial class ModUtilityPanelsMod : Mod {
 		public override void ModifyInterfaceLayers( List<GameInterfaceLayer> layers ) {
 			int idx = layers.FindIndex( layer => layer.Name.Equals( "Vanilla: Mouse Text" ) );
 			if( idx == -1 ) { return; }
@@ -46,9 +46,9 @@ namespace ModControlPanel {
 					cp.DrawTogglerIf( sb );
 				}
 
-				if( this.LastSeenCPScreenWidth != Main.screenWidth || this.LastSeenCPScreenHeight != Main.screenHeight ) {
-					this.LastSeenCPScreenWidth = Main.screenWidth;
-					this.LastSeenCPScreenHeight = Main.screenHeight;
+				if( this.LastSeenUPScreenWidth != Main.screenWidth || this.LastSeenUPScreenHeight != Main.screenHeight ) {
+					this.LastSeenUPScreenWidth = Main.screenWidth;
+					this.LastSeenUPScreenHeight = Main.screenHeight;
 					//this.ControlPanelUI.Recalculate();
 
 					cp.RecalculateMe();
