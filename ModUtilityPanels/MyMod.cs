@@ -16,7 +16,7 @@ namespace ModUtilityPanels {
 		private int LastSeenUPScreenWidth = -1;
 		private int LastSeenUPScreenHeight = -1;
 
-		public ModHotKey ControlPanelHotkey = null;
+		public ModHotKey UtilityPanelsHotkey = null;
 
 
 
@@ -27,7 +27,7 @@ namespace ModUtilityPanels {
 
 		////////////////
 
-		public event Action OnControlPanelInitialize;
+		public event Action OnUtilityPanelsInitialize;
 
 
 
@@ -36,13 +36,13 @@ namespace ModUtilityPanels {
 		public override void Load() {
 			ModUtilityPanelsMod.Instance = this;
 
-			this.ControlPanelHotkey = this.RegisterHotKey( "Toggle Utility Panels", "O" );
+			this.UtilityPanelsHotkey = this.RegisterHotKey( "Toggle Utility Panels", "O" );
 		}
 
 		////
 
 		internal void PostInitializeUtilityPanels() {
-			this.OnControlPanelInitialize?.Invoke();
+			this.OnUtilityPanelsInitialize?.Invoke();
 		}
 
 		////
@@ -51,7 +51,7 @@ namespace ModUtilityPanels {
 			try {
 				LogLibraries.Alert( "Unloading mod..." );
 
-				this.ControlPanelHotkey = null;
+				this.UtilityPanelsHotkey = null;
 			} catch( Exception e ) {
 				this.Logger.Warn( "!ModUtilityPanels.ModModUtilityPanels.UnloadFull - " + e.ToString() ); //was Error(...)
 			}

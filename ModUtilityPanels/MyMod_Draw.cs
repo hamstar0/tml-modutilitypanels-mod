@@ -18,16 +18,16 @@ namespace ModUtilityPanels {
 
 			//
 
-			GameInterfaceDrawMethod cpDrawCallback = () => {
-				this.DrawCP( Main.spriteBatch );
+			GameInterfaceDrawMethod upDrawCallback = () => {
+				this.DrawUP( Main.spriteBatch );
 				return true;
 			};
 
 			//
 
 			if( LoadLibraries.IsCurrentPlayerInGame() ) {
-				var cpLayer = new LegacyGameInterfaceLayer( "ModControlPanel: Control Panel",
-					cpDrawCallback,
+				var cpLayer = new LegacyGameInterfaceLayer( "ModUtilityPanels: Utility Panels",
+					upDrawCallback,
 					InterfaceScaleType.UI );
 				layers.Insert( idx, cpLayer );
 			}
@@ -36,14 +36,14 @@ namespace ModUtilityPanels {
 
 		////////////////
 
-		private void DrawCP( SpriteBatch sb ) {
+		private void DrawUP( SpriteBatch sb ) {
 			try {
-				var cp = ModContent.GetInstance<UIControlPanel>();
+				var up = ModContent.GetInstance<UIControlPanel>();
 
 				if( !ModControlPanelConfig.Instance.DisableControlPanel ) {
-					cp.UpdateToggler();
+					up.UpdateToggler();
 
-					cp.DrawTogglerIf( sb );
+					up.DrawTogglerIf( sb );
 				}
 
 				if( this.LastSeenUPScreenWidth != Main.screenWidth || this.LastSeenUPScreenHeight != Main.screenHeight ) {
@@ -51,7 +51,7 @@ namespace ModUtilityPanels {
 					this.LastSeenUPScreenHeight = Main.screenHeight;
 					//this.ControlPanelUI.Recalculate();
 
-					cp.RecalculateMe();
+					up.RecalculateMe();
 				}
 			} catch( Exception e ) {
 				LogLibraries.Warn( e.ToString() );

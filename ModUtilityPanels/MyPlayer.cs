@@ -29,7 +29,7 @@ namespace ModUtilityPanels {
 			var cp = ModContent.GetInstance<UIControlPanel>();
 
 			try {
-				if( mymod.ControlPanelHotkey != null && mymod.ControlPanelHotkey.JustPressed ) {
+				if( mymod.UtilityPanelsHotkey != null && mymod.UtilityPanelsHotkey.JustPressed ) {
 					if( cp != null ) {
 						if( cp.IsOpen ) {
 							ControlPanelTabs.CloseDialog();
