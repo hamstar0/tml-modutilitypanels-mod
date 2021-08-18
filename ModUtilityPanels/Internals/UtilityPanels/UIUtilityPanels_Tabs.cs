@@ -5,16 +5,16 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
-	partial class UIControlPanel : UIState {
-		public UIControlPanelTab GetTab( string name ) {
+namespace ModUtilityPanels.Internals.UtilityPanels {
+	partial class UIUtilityPanels : UIState {
+		public UIUtilityPanelsTab GetTab( string name ) {
 			return this.Tabs.GetOrDefault( name );
 		}
 
 
 		////////////////
 
-		private void InitializeTab( string title, UIControlPanelTab tab ) {
+		private void InitializeTab( string title, UIUtilityPanelsTab tab ) {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 
@@ -24,7 +24,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		////////////////
 
-		public void AddTab( string title, UIControlPanelTab tab ) {
+		public void AddTab( string title, UIUtilityPanelsTab tab ) {
 			this.Tabs[ title ] = tab;
 			this.TabTitleOrder[ title ] = this.TabTitleOrder.Count;
 
@@ -41,7 +41,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 				return true;
 			}
 
-			UIControlPanelTab tab;
+			UIUtilityPanelsTab tab;
 			if( !this.Tabs.TryGetValue(tabName, out tab) ) {
 				return false;
 			}
@@ -55,7 +55,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		////
 
-		public void ChangeToTabElement( UIControlPanelTab tab ) {
+		public void ChangeToTabElement( UIUtilityPanelsTab tab ) {
 			tab.Width.Set( 0f, 1f );
 			tab.Height.Set( 0f, 1f );
 
@@ -63,7 +63,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 			this.InnerContainer.Remove();
 
 			this.InnerContainer = tab;
-			this.InnerContainer.PaddingBottom = UIControlPanel.TabButtonHeight;
+			this.InnerContainer.PaddingBottom = UIUtilityPanels.TabButtonHeight;
 			this.MidContainer.Append( this.InnerContainer );
 
 			if( !tab.IsInitialized ) {
@@ -75,7 +75,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 			if( tab.CustomWidth.HasValue ) {
 				this.OuterContainer.Width.Set( tab.CustomWidth.Value, 0f );
 			} else {
-				this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
+				this.OuterContainer.Width.Set( UIUtilityPanels.ContainerWidth, 0f );
 			}
 
 			this.RecalculateContainerDimensions();

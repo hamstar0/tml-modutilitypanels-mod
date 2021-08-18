@@ -2,20 +2,20 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ModUtilityPanels.Services.UI.ControlPanel;
+using ModUtilityPanels.Services.UI.UtilityPanels;
 
 
 namespace ModUtilityPanels.Commands {
 	/// @private
-	public class ControlPanelOpenCommand : ModCommand {
+	public class UtilityPanelsOpenCommand : ModCommand {
 		/// @private
 		public override CommandType Type => CommandType.Chat;
 		/// @private
-		public override string Command => "ml-cp-open";
+		public override string Command => "ml-up-open";
 		/// @private
 		public override string Usage => "/" +this.Command;
 		/// @private
-		public override string Description => "Opens the mod Control Panel.";
+		public override string Description => "Opens the mod Utility Panels.";
 
 
 		////////////////
@@ -27,10 +27,10 @@ namespace ModUtilityPanels.Commands {
 				return;
 			}
 
-			if( ModControlPanelConfig.Instance.DisableControlPanel ) {
-				caller.Reply( "Control panel disabled.", Color.Red );
+			if( ModUtilityPanelsConfig.Instance.DisableUtilityPanels ) {
+				caller.Reply( "Utility panels disabled.", Color.Red );
 			} else {
-				ControlPanelTabs.OpenTab( ControlPanelTabs.GetCurrentTab() );
+				UtilityPanelsTabs.OpenTab( UtilityPanelsTabs.GetCurrentTab() );
 			}
 		}
 	}

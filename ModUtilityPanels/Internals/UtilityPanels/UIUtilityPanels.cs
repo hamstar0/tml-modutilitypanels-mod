@@ -12,9 +12,9 @@ using ModLibsUI.Classes.UI.Elements;
 using ModLibsUI.Classes.UI.Theme;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState, ILoadable {
+	partial class UIUtilityPanels : UIState, ILoadable {
 		public const string DefaultTabName = "Welcome";
 
 		////////////////
@@ -32,7 +32,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		////
 
-		private IDictionary<string, UIControlPanelTab> Tabs = new Dictionary<string, UIControlPanelTab>();
+		private IDictionary<string, UIUtilityPanelsTab> Tabs = new Dictionary<string, UIUtilityPanelsTab>();
 		private IDictionary<string, int> TabTitleOrder = new Dictionary<string, int>();
 
 		private IList<UITextPanelButton> TabButtons = new List<UITextPanelButton>();
@@ -59,7 +59,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		////
 
-		public UIControlPanelTab CurrentTab => this.Tabs.GetOrDefault( this.CurrentTabName );
+		public UIUtilityPanelsTab CurrentTab => this.Tabs.GetOrDefault( this.CurrentTabName );
 
 
 

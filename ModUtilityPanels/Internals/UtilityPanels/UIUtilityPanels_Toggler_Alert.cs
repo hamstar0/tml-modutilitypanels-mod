@@ -10,9 +10,9 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsGeneral.Services.AnimatedColor;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState {
+	partial class UIUtilityPanels : UIState {
 		private IDictionary<string, bool> AlertTabs = new Dictionary<string, bool>();
 
 
@@ -62,7 +62,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 			float scale = 1.15f;
 
-			Vector2 pos = UIControlPanel.TogglerPosition;
+			Vector2 pos = UIUtilityPanels.TogglerPosition;
 			pos.X += 11f;
 			pos.Y += 14f;
 
@@ -89,21 +89,21 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 			if( this.PriorityAlertAnim == 0 ) {
 				this.PriorityAlertAnim = 1;
-				tex = UIControlPanel.AlertBorder1;
+				tex = UIUtilityPanels.AlertBorder1;
 			} else if( this.PriorityAlertAnim == 1 ) {
 				this.PriorityAlertAnim = 2;
-				tex = UIControlPanel.AlertBorder2;
+				tex = UIUtilityPanels.AlertBorder2;
 			} else if( this.PriorityAlertAnim == 2 ) {
 				this.PriorityAlertAnim = 3;
-				tex = UIControlPanel.AlertBorder3;
+				tex = UIUtilityPanels.AlertBorder3;
 			} else {
 				this.PriorityAlertAnim = 0;
-				tex = UIControlPanel.AlertBorder2;
+				tex = UIUtilityPanels.AlertBorder2;
 			}
 
 			sb.Draw(
 				texture: tex,
-				position: UIControlPanel.TogglerPosition + new Vector2(-2f, -2f),
+				position: UIUtilityPanels.TogglerPosition + new Vector2(-2f, -2f),
 				color: Color.White * opacity
 			);
 		}

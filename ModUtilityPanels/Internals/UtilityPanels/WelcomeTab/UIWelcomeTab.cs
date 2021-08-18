@@ -6,11 +6,11 @@ using Terraria.UI;
 using ModLibsCore.Services.Hooks.LoadHooks;
 using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
-using ModUtilityPanels.Services.UI.ControlPanel;
+using ModUtilityPanels.Services.UI.UtilityPanels;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
-	partial class UIWelcomeControlPanelTab : UIControlPanelTab {
+namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
+	partial class UIWelcomeUtilityPanelsTab : UIUtilityPanelsTab {
 		private static IList<string> SupportMessages = new List<string> {
 			"Buy me coffee for coding! :)",
 			"Did you know I make other mods?",
@@ -34,7 +34,7 @@ namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
 
 		////////////////
 
-		public UIWelcomeControlPanelTab( UITheme theme ) : base( theme ) {
+		public UIWelcomeUtilityPanelsTab( UITheme theme ) : base( theme ) {
 			this.Theme = theme;
 		}
 
@@ -47,13 +47,13 @@ namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
 		////////////////
 
 		public override void OnInitializeMe() {
-			this.RandomSupportTextIdx = Main.rand.Next( UIWelcomeControlPanelTab.SupportMessages.Count );
+			this.RandomSupportTextIdx = Main.rand.Next( UIWelcomeUtilityPanelsTab.SupportMessages.Count );
 			
 			this.InitializeComponents();
 
 			LoadHooks.AddWorldUnloadEachHook( () => {
-				this.RandomSupportTextIdx = Main.rand.Next( UIWelcomeControlPanelTab.SupportMessages.Count );
-				this.SupportUrl?.SetText( UIWelcomeControlPanelTab.SupportMessages[this.RandomSupportTextIdx] );
+				this.RandomSupportTextIdx = Main.rand.Next( UIWelcomeUtilityPanelsTab.SupportMessages.Count );
+				this.SupportUrl?.SetText( UIWelcomeUtilityPanelsTab.SupportMessages[this.RandomSupportTextIdx] );
 			} );
 		}
 
@@ -66,7 +66,7 @@ namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
 			if( this.RequestClose ) {
 				this.RequestClose = false;
 
-				ControlPanelTabs.CloseDialog();
+				UtilityPanelsTabs.CloseDialog();
 
 				return;
 			}

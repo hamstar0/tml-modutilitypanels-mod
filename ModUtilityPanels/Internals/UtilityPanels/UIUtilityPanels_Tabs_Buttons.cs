@@ -8,20 +8,20 @@ using ModLibsCore.Services.Timers;
 using ModLibsUI.Classes.UI.Elements;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState, ILoadable {
+	partial class UIUtilityPanels : UIState, ILoadable {
 		private void AddTabButton( string title ) {
-			UIControlPanelTab tab = this.Tabs[title];
+			UIUtilityPanelsTab tab = this.Tabs[title];
 			int idx = this.TabTitleOrder[title];
 
-			int posX = UIControlPanel.TabButtonWidth * idx;
+			int posX = UIUtilityPanels.TabButtonWidth * idx;
 
 			var button = new UITextPanelButton( tab.Theme, title );
 			button.Left.Set( (float)posX, 0f );
-			button.Top.Set( -UIControlPanel.TabButtonHeight, 0f );
-			button.Width.Set( UIControlPanel.TabButtonWidth, 0f );
-			button.Height.Set( UIControlPanel.TabButtonHeight, 0f );
+			button.Top.Set( -UIUtilityPanels.TabButtonHeight, 0f );
+			button.Width.Set( UIUtilityPanels.TabButtonWidth, 0f );
+			button.Height.Set( UIUtilityPanels.TabButtonHeight, 0f );
 			button.OnClick += ( _, __ ) => {
 				this.ChangeToTabIf( title );
 			};
@@ -89,7 +89,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 			} else if( tabName == this.CurrentTabName ) {
 				button.TextColor = Color.White;
 			} else {
-				button.TextColor = UIControlPanel.DefaultTabButtonColor;
+				button.TextColor = UIUtilityPanels.DefaultTabButtonColor;
 			}
 		}
 	}

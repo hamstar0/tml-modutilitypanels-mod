@@ -1,23 +1,23 @@
 ﻿using System;
 using Terraria.ModLoader;
-using ModUtilityPanels.Internals.ControlPanel;
+using ModUtilityPanels.Internals.UtilityPanels;
 
 
-namespace ModUtilityPanels.Services.UI.ControlPanel {
+namespace ModUtilityPanels.Services.UI.UtilityPanels {
 	/// <summary>
-	/// Supplies an interface to add to and manage control panel tabs. The control panel is accessible in the top left
-	/// corner (by default) when the player's inventory is displayed.
+	/// Supplies an interface to add to and manage utility panel tabs. The control panel is accessible in the top
+	/// left corner (by default) when the player's inventory is displayed.
 	/// </summary>
-	public class ControlPanelTabs {
+	public class UtilityPanelsTabs {
 		/// <summary>
-		/// Adds a tab to the control panel UI.
+		/// Adds a tab to the utility panel UI.
 		/// </summary>
 		/// <param name="title"></param>
 		/// <param name="tab"></param>
-		public static void AddTab( string title, UIControlPanelTab tab ) {
-			var cp = ModContent.GetInstance<UIControlPanel>();
+		public static void AddTab( string title, UIUtilityPanelsTab tab ) {
+			var up = ModContent.GetInstance<UIUtilityPanels>();
 
-			cp?.AddTab( title, tab );
+			up?.AddTab( title, tab );
 		}
 
 		////////////////
@@ -27,9 +27,9 @@ namespace ModUtilityPanels.Services.UI.ControlPanel {
 		/// </summary>
 		/// <returns></returns>
 		public static string GetCurrentTab() {
-			var cp = ModContent.GetInstance<UIControlPanel>();
+			var up = ModContent.GetInstance<UIUtilityPanels>();
 
-			return cp?.CurrentTabName;
+			return up?.CurrentTabName;
 		}
 
 		/// <summary>
@@ -37,39 +37,39 @@ namespace ModUtilityPanels.Services.UI.ControlPanel {
 		/// </summary>
 		/// <param name="tabName"></param>
 		public static void OpenTab( string tabName ) {
-			var cp = ModContent.GetInstance<UIControlPanel>();
-			if( cp == null ) {
+			var up = ModContent.GetInstance<UIUtilityPanels>();
+			if( up == null ) {
 				return;
 			}
 
-			if( !cp.IsOpen ) {
-				cp.Open();
+			if( !up.IsOpen ) {
+				up.Open();
 			}
 
-			cp.ChangeToTabIf( tabName );
+			up.ChangeToTabIf( tabName );
 
-			cp.ClearTabAlert( tabName );
+			up.ClearTabAlert( tabName );
 		}
 
 
 		////////////////
 
 		/// <summary>
-		/// Indicates if the control panel dialog is open.
+		/// Indicates if the utility panel dialog is open.
 		/// </summary>
 		/// <returns></returns>
 		public static bool IsDialogOpen() {
-			var cp = ModContent.GetInstance<UIControlPanel>();
-			return cp?.IsOpen ?? false;
+			var up = ModContent.GetInstance<UIUtilityPanels>();
+			return up?.IsOpen ?? false;
 		}
 
 		/// <summary>
-		/// Closes the control panel dialog.
+		/// Closes the utility panel dialog.
 		/// </summary>
 		public static void CloseDialog() {
-			var cp = ModContent.GetInstance<UIControlPanel>();
+			var up = ModContent.GetInstance<UIUtilityPanels>();
 
-			cp?.Close();
+			up?.Close();
 			//this.SetDialogToClose = false;
 			//this.Close();
 		}
@@ -78,20 +78,20 @@ namespace ModUtilityPanels.Services.UI.ControlPanel {
 		////////////////
 
 		/// <summary>
-		/// Indicates that a given tab has important new information to be seen immediate.y
+		/// Indicates that a given tab has important new information to be seen immediate.
 		/// </summary>
 		/// <param name="tabName"></param>
 		/// <param name="isPriority"></param>
 		public static void AddTabAlert( string tabName, bool isPriority ) {
-			var cp = ModContent.GetInstance<UIControlPanel>();
-			cp?.AddTabAlert( tabName, isPriority );
+			var up = ModContent.GetInstance<UIUtilityPanels>();
+			up?.AddTabAlert( tabName, isPriority );
 		}
 
 		/// <summary></summary>
 		/// <param name="tabName"></param>
 		public static void ClearTabAlert( string tabName ) {
-			var cp = ModContent.GetInstance<UIControlPanel>();
-			cp?.ClearTabAlert( tabName );
+			var up = ModContent.GetInstance<UIUtilityPanels>();
+			up?.ClearTabAlert( tabName );
 		}
 	}
 }

@@ -4,9 +4,9 @@ using Terraria.UI;
 using ModLibsCore.Services.Timers;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState {
+	partial class UIUtilityPanels : UIState {
 		public bool CanOpen() {
 			return !this.IsOpen && !Main.inFancyUI;
 		}

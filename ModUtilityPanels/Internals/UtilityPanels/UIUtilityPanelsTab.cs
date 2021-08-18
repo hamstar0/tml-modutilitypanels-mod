@@ -5,9 +5,9 @@ using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	public abstract class UIControlPanelTab : UIThemedPanel {
+	public abstract class UIUtilityPanelsTab : UIThemedPanel {
 		/// @private
 		public bool IsInitialized { get; private set; }
 
@@ -17,7 +17,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		////////////////
 
-		protected UIControlPanelTab( UITheme theme, int? customWidth = null ) : base( theme, false ) {
+		protected UIUtilityPanelsTab( UITheme theme, int? customWidth = null ) : base( theme, false ) {
 			this.CustomWidth = customWidth;
 		}
 

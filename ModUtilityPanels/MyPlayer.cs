@@ -4,13 +4,13 @@ using Terraria.GameInput;
 using Terraria.ModLoader;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
-using ModUtilityPanels.Services.UI.ControlPanel;
-using ModUtilityPanels.Internals.ControlPanel;
+using ModUtilityPanels.Services.UI.UtilityPanels;
+using ModUtilityPanels.Internals.UtilityPanels;
 
 
 namespace ModUtilityPanels {
 	/// @private
-	partial class ModControlPanelPlayer : ModPlayer {
+	partial class ModUtilityPanelsPlayer : ModPlayer {
 		public override bool CloneNewInstances => false;
 
 
@@ -18,7 +18,7 @@ namespace ModUtilityPanels {
 		////////////////
 
 		public override void PreUpdate() {
-			ModContent.GetInstance<UIControlPanel>().UpdateGlobal();
+			ModContent.GetInstance<UIUtilityPanels>().UpdateGlobal();
 		}
 
 
@@ -26,15 +26,15 @@ namespace ModUtilityPanels {
 
 		public override void ProcessTriggers( TriggersSet triggersSet ) {
 			var mymod = ModUtilityPanelsMod.Instance;
-			var cp = ModContent.GetInstance<UIControlPanel>();
+			var cp = ModContent.GetInstance<UIUtilityPanels>();
 
 			try {
 				if( mymod.UtilityPanelsHotkey != null && mymod.UtilityPanelsHotkey.JustPressed ) {
 					if( cp != null ) {
 						if( cp.IsOpen ) {
-							ControlPanelTabs.CloseDialog();
+							UtilityPanelsTabs.CloseDialog();
 						} else {
-							ControlPanelTabs.OpenTab( UIControlPanel.DefaultTabName );
+							UtilityPanelsTabs.OpenTab( UIUtilityPanels.DefaultTabName );
 						}
 					}
 				}

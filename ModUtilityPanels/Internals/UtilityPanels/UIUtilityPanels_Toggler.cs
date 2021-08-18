@@ -2,25 +2,24 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using ReLogic.Graphics;
 using Terraria;
 using Terraria.UI;
 using ModLibsCore.Libraries.Debug;
-using ModUtilityPanels.Services.UI.ControlPanel;
+using ModUtilityPanels.Services.UI.UtilityPanels;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState {
+	partial class UIUtilityPanels : UIState {
 		private static Vector2 TogglerPosition {
 			get {
-				var config = ModControlPanelConfig.Instance;
-				int x = config.ControlPanelIconX < 0
-					? Main.screenWidth + config.ControlPanelIconX
-					: config.ControlPanelIconX;
-				int y = config.ControlPanelIconY < 0
-					? Main.screenHeight + config.ControlPanelIconY
-					: config.ControlPanelIconY;
+				var config = ModUtilityPanelsConfig.Instance;
+				int x = config.UtilityPanelsIconX < 0
+					? Main.screenWidth + config.UtilityPanelsIconX
+					: config.UtilityPanelsIconX;
+				int y = config.UtilityPanelsIconY < 0
+					? Main.screenHeight + config.UtilityPanelsIconY
+					: config.UtilityPanelsIconY;
 
 				if( x == 0 && y == 0 ) {
 					if( Main.LocalPlayer.InfoAccMechShowWires && Main.LocalPlayer.rulerLine ) {
@@ -70,14 +69,14 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 			Color color;
 
 			if( this.IsTogglerLit ) {
-				tex = UIControlPanel.ControlPanelIconLit;
+				tex = UIUtilityPanels.UtilityPanelsIconLit;
 				color = new Color( 192, 192, 192, 192 );
 			} else {
-				tex = UIControlPanel.ControlPanelIcon;
+				tex = UIUtilityPanels.UtilityPanelsIcon;
 				color = new Color( 160, 160, 160, 160 );
 			}
 
-			sb.Draw( tex, UIControlPanel.TogglerPosition, null, color );
+			sb.Draw( tex, UIUtilityPanels.TogglerPosition, null, color );
 
 			if( alertShown ) {
 				this.DrawTogglerAlert( sb, (float)color.A / 255f );
@@ -95,7 +94,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 				Utils.DrawBorderStringFourWay(
 					sb: sb,
 					font: Main.fontMouseText,
-					text: "Mod Control Panel",
+					text: "Mod Utility Panels",
 					x: Main.mouseX + 8,
 					y: Main.mouseY + 8,
 					textColor: new Color( Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor ),
@@ -111,8 +110,8 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		private void RunTogglerMouseInteraction() {
 			bool isClick = Main.mouseLeft && Main.mouseLeftRelease && !this.HasClicked;
-			Vector2 pos = UIControlPanel.TogglerPosition;
-			Vector2 size = UIControlPanel.ControlPanelIcon.Size();
+			Vector2 pos = UIUtilityPanels.TogglerPosition;
+			Vector2 size = UIUtilityPanels.UtilityPanelsIcon.Size();
 
 			this.IsTogglerLit = false;
 
@@ -141,19 +140,19 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		private void OpenViaToggler() {
 			if( !this.IsTogglerUpdateAlertShown( out string tabName ) ) {
-				tabName = UIControlPanel.DefaultTabName;
+				tabName = UIUtilityPanels.DefaultTabName;
 			} else {
 				this.AlertTabs.Remove( tabName );
 			}
 
-			ControlPanelTabs.OpenTab( tabName );
+			UtilityPanelsTabs.OpenTab( tabName );
 
-			//var mymod = ModControlPanelMod.Instance;
+			//var mymod = ModUtilityPanelsMod.Instance;
 			//Version oldVers;
-			//Version newVers = UIControlPanel.AlertSinceVersion;
+			//Version newVers = UIUtilityPanels.AlertSinceVersion;
 			//
-			//if( Version.TryParse( mymod.Data.ControlPanelNewSince, out oldVers ) && oldVers != newVers ) {
-			//	mymod.Data.ControlPanelNewSince = newVers.ToString();
+			//if( Version.TryParse( mymod.Data.UtilityPanelsNewSince, out oldVers ) && oldVers != newVers ) {
+			//	mymod.Data.UtilityPanelsNewSince = newVers.ToString();
 			//	mymod.SaveModData();
 			//}
 		}

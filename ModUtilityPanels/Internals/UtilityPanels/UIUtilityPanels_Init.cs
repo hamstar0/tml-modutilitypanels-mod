@@ -5,17 +5,17 @@ using Terraria.ID;
 using Terraria.UI;
 using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
-using ModUtilityPanels.Internals.ControlPanel.ModControlPanel;
+using ModUtilityPanels.Internals.UtilityPanels.WelcomeTab;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState {
+	partial class UIUtilityPanels : UIState {
 		public static float ContainerWidth = 600f;
 		public static float ContainerHeight = 520f;
 		
-		public static Texture2D ControlPanelIcon { get; private set; }
-		public static Texture2D ControlPanelIconLit { get; private set; }
+		public static Texture2D UtilityPanelsIcon { get; private set; }
+		public static Texture2D UtilityPanelsIconLit { get; private set; }
 		public static Texture2D AlertBorder1 { get; private set; }
 		public static Texture2D AlertBorder2 { get; private set; }
 		public static Texture2D AlertBorder3 { get; private set; }
@@ -27,18 +27,18 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 		private void InitializeSingleton() {
 			var mymod = ModUtilityPanelsMod.Instance;
 
-			UIControlPanel.ControlPanelIcon = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIcon" );
-			UIControlPanel.ControlPanelIconLit = mymod.GetTexture( "Internals/ControlPanel/ControlPanelIconLit" );
-			UIControlPanel.AlertBorder1 = mymod.GetTexture( "Internals/ControlPanel/AlertBorder1" );
-			UIControlPanel.AlertBorder2 = mymod.GetTexture( "Internals/ControlPanel/AlertBorder2" );
-			UIControlPanel.AlertBorder3 = mymod.GetTexture( "Internals/ControlPanel/AlertBorder3" );
+			UIUtilityPanels.UtilityPanelsIcon = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIcon" );
+			UIUtilityPanels.UtilityPanelsIconLit = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIconLit" );
+			UIUtilityPanels.AlertBorder1 = mymod.GetTexture( "Internals/UtilityPanels/AlertBorder1" );
+			UIUtilityPanels.AlertBorder2 = mymod.GetTexture( "Internals/UtilityPanels/AlertBorder2" );
+			UIUtilityPanels.AlertBorder3 = mymod.GetTexture( "Internals/UtilityPanels/AlertBorder3" );
 
 			//
 
 			this.Theme = UITheme.Vanilla;
 
-			this.CurrentTabName = UIControlPanel.DefaultTabName;
-			this.Tabs[this.CurrentTabName] = new UIWelcomeControlPanelTab( this.Theme );
+			this.CurrentTabName = UIUtilityPanels.DefaultTabName;
+			this.Tabs[this.CurrentTabName] = new UIWelcomeUtilityPanelsTab( this.Theme );
 			this.TabTitleOrder[this.CurrentTabName] = this.TabTitleOrder.Count;
 		}
 
@@ -47,20 +47,20 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 
 		private void InitializeComponents() {
 			this.OuterContainer = new UIElement();
-			this.OuterContainer.Width.Set( UIControlPanel.ContainerWidth, 0f );
-			this.OuterContainer.Height.Set( UIControlPanel.ContainerHeight + UIControlPanel.TabButtonHeight, 0f );
-			//this.OuterContainer.MaxWidth.Set( UIControlPanel.ContainerWidth, 0f );
-			//this.OuterContainer.MaxHeight.Set( UIControlPanel.ContainerHeight, 0f );
+			this.OuterContainer.Width.Set( UIUtilityPanels.ContainerWidth, 0f );
+			this.OuterContainer.Height.Set( UIUtilityPanels.ContainerHeight + UIUtilityPanels.TabButtonHeight, 0f );
+			//this.OuterContainer.MaxWidth.Set( UIUtilityPanels.ContainerWidth, 0f );
+			//this.OuterContainer.MaxHeight.Set( UIUtilityPanels.ContainerHeight, 0f );
 			this.OuterContainer.HAlign = 0f;
-			//this.MainElement.BackgroundColor = ControlPanelUI.MainBgColor;
-			//this.MainElement.BorderColor = ControlPanelUI.MainEdgeColor;
+			//this.MainElement.BackgroundColor = UtilityPanelsUI.MainBgColor;
+			//this.MainElement.BorderColor = UtilityPanelsUI.MainEdgeColor;
 			this.Append( this.OuterContainer );
 
 			this.RecalculateContainerDimensions();
 
 			this.MidContainer = new UIThemedPanel( this.Theme, false );
 			this.MidContainer.SetPadding( 0f );
-			this.MidContainer.PaddingTop = UIControlPanel.TabButtonHeight;
+			this.MidContainer.PaddingTop = UIUtilityPanels.TabButtonHeight;
 			this.MidContainer.Width.Set( 0f, 1f );
 			this.MidContainer.Height.Set( 0f, 1f );
 			this.MidContainer.HAlign = 0f;
@@ -82,7 +82,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 			this.InnerContainer = this.CurrentTab;
 			this.InnerContainer.Width.Set( 0f, 1f );
 			this.InnerContainer.Height.Set( 0f, 1f );
-			this.InnerContainer.PaddingBottom = UIControlPanel.TabButtonHeight;
+			this.InnerContainer.PaddingBottom = UIUtilityPanels.TabButtonHeight;
 			this.MidContainer.Append( (UIElement)this.InnerContainer );
 
 			this.InnerContainer.Initialize();
@@ -93,7 +93,7 @@ namespace ModUtilityPanels.Internals.ControlPanel {
 				this.InitializeTab( kv.Key, kv.Value );
 			}
 
-			UIControlPanel.DefaultTabButtonColor = Color.Gray;	//this.Theme.ButtonTextColor;
+			UIUtilityPanels.DefaultTabButtonColor = Color.Gray;	//this.Theme.ButtonTextColor;
 		}
 	}
 }

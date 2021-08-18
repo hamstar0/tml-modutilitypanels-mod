@@ -3,9 +3,9 @@ using Terraria.UI;
 using ModLibsCore.Libraries.Debug;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels {
 	/// @private
-	partial class UIControlPanel : UIState {
+	partial class UIUtilityPanels : UIState {
 		/*private bool _IsRecalculating = false;
 
 		public override void Recalculate() {

@@ -6,7 +6,7 @@ using Terraria.UI;
 using Terraria.ModLoader;
 using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.TModLoader;
-using ModUtilityPanels.Internals.ControlPanel;
+using ModUtilityPanels.Internals.UtilityPanels;
 
 
 namespace ModUtilityPanels {
@@ -38,9 +38,9 @@ namespace ModUtilityPanels {
 
 		private void DrawUP( SpriteBatch sb ) {
 			try {
-				var up = ModContent.GetInstance<UIControlPanel>();
+				var up = ModContent.GetInstance<UIUtilityPanels>();
 
-				if( !ModControlPanelConfig.Instance.DisableControlPanel ) {
+				if( !ModUtilityPanelsConfig.Instance.DisableUtilityPanels ) {
 					up.UpdateToggler();
 
 					up.DrawTogglerIf( sb );
@@ -49,7 +49,7 @@ namespace ModUtilityPanels {
 				if( this.LastSeenUPScreenWidth != Main.screenWidth || this.LastSeenUPScreenHeight != Main.screenHeight ) {
 					this.LastSeenUPScreenWidth = Main.screenWidth;
 					this.LastSeenUPScreenHeight = Main.screenHeight;
-					//this.ControlPanelUI.Recalculate();
+					//this.UtilityPanelsUI.Recalculate();
 
 					up.RecalculateMe();
 				}

@@ -4,9 +4,9 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsUI.Classes.UI.Elements;
 
 
-namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
+namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
 	/// @private
-	partial class UIWelcomeControlPanelTab : UIControlPanelTab {
+	partial class UIWelcomeUtilityPanelsTab : UIUtilityPanelsTab {
 		private void InitializeComponents() {
 			float top = 0;
 			
@@ -14,7 +14,7 @@ namespace ModUtilityPanels.Internals.ControlPanel.ModControlPanel {
 
 			////////
 
-			string supportMsg = UIWelcomeControlPanelTab.SupportMessages[ this.RandomSupportTextIdx ];
+			string supportMsg = UIWelcomeUtilityPanelsTab.SupportMessages[ this.RandomSupportTextIdx ];
 			this.SupportUrl = new UIWebUrl( this.Theme, supportMsg, "https://www.patreon.com/hamstar0", false );
 			this.SupportUrl.Top.Set( top, 0f );
 			this.Append( this.SupportUrl );

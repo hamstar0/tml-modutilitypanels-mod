@@ -6,14 +6,14 @@ using Terraria.ModLoader.Config;
 
 namespace ModUtilityPanels {
 	/// <summary>
-	/// Defines Mod Control Panel config settings.
+	/// Defines Mod Utility Panels config settings.
 	/// </summary>
-	[Label( "Mod Control Panel Settings" )]
-	public class ModControlPanelConfig : ModConfig {
+	[Label( "Mod Utility Panels Settings" )]
+	public class ModUtilityPanelsConfig : ModConfig {
 		/// <summary>
 		/// Gets the stack-merged singleton instance of this config file.
 		/// </summary>
-		public static ModControlPanelConfig Instance => ModContent.GetInstance<ModControlPanelConfig>();
+		public static ModUtilityPanelsConfig Instance => ModContent.GetInstance<ModUtilityPanelsConfig>();
 
 
 
@@ -27,31 +27,31 @@ namespace ModUtilityPanels {
 		////////////////
 
 		/// <summary>
-		/// Disables control panel outright.
+		/// Disables Utility Panels outright.
 		/// </summary>
-		[Header( "Control panel settings" )]
-		[Label( "Disable Control Panel" )]
-		[Tooltip( "Disables control panel outright." )]
-		public bool DisableControlPanel { get; set; } = false;
+		[Header( "Utility panels settings" )]
+		[Label( "Disable Utility Panels" )]
+		[Tooltip( "Disables utility panels outright." )]
+		public bool DisableUtilityPanels { get; set; } = false;
 
 		/// <summary>
-		/// Control panel icon's X coordinate on screen. Negative values align the button from the right edge.
+		/// Utility panel icon's X coordinate on screen. Negative values align the button from the right edge.
 		/// </summary>
-		[Label( "Control Panel Icon X" )]
-		[Tooltip( "Control panel icon's X coordinate on screen. Negative values align the button from the right edge." )]
+		[Label( "Utility Panels Icon X" )]
+		[Tooltip( "Utility panels icon's X coordinate on screen. Negative values align the button from the right edge." )]
 		[Increment( 10 )]
 		[Range( -4096, 4096 )]
 		[DefaultValue( 2 )]
-		public int ControlPanelIconX { get; set; } = 2;
+		public int UtilityPanelsIconX { get; set; } = 2;
 
 		/// <summary>
-		/// Control panel icon's Y coordinate on screen. Negative values align the button from the bottom edge.
+		/// Utility panel icon's Y coordinate on screen. Negative values align the button from the bottom edge.
 		/// </summary>
-		[Label( "Control Panel Icon Y" )]
-		[Tooltip( "Control panel icon's Y coordinate on screen. Negative values align the button from the bottom edge." )]
+		[Label( "Utility Panels Icon Y" )]
+		[Tooltip( "Utility panel icon's Y coordinate on screen. Negative values align the button from the bottom edge." )]
 		[Increment( 10 )]
 		[Range( -2160, 2160 )]
 		[DefaultValue( 2 )]
-		public int ControlPanelIconY { get; set; } = 2;
+		public int UtilityPanelsIconY { get; set; } = 2;
 	}
 }
