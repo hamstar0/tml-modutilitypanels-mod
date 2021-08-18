@@ -1,4 +1,4 @@
-# Mod Control Panel (Mod Libs)
+# Mod Utility Panels (Mod Libs)
 
 Supplies a handy in-game control panel dialog box that can support custom tabs. Accessible via. a toggle button in the top left corner when viewing the inventory screen.
 
