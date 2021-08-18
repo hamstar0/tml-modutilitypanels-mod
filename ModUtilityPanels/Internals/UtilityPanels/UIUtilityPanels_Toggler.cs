@@ -64,7 +64,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 				return;
 			}
 
-			bool alertShown = this.IsTogglerUpdateAlertShown( out string _, out bool isPriority );
+			bool alertShown = this.IsTogglerUpdateAlertShown( out string alertTab, out bool isPriority );
 			Texture2D tex = alertShown
 				? isPriority
 					? UIUtilityPanels.UtilityPanelsIconOnAlert
@@ -74,6 +74,24 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 					: UIUtilityPanels.UtilityPanelsIcon;
 
 			sb.Draw( tex, UIUtilityPanels.TogglerPosition, null, Color.White );
+
+			if( this.IsTogglerHovered ) {
+				string text = alertShown
+					? "New "+alertTab+" Content!"
+					: "Mod Utility Panels";
+				Color color = new Color( Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor );
+
+				Utils.DrawBorderStringFourWay(
+					sb: sb,
+					font: Main.fontMouseText,
+					text: text,
+					x: Main.mouseX + 8,
+					y: Main.mouseY + 8,
+					textColor: color,
+					borderColor: Color.Black,
+					origin: default
+				);
+			}
 		}
 
 
