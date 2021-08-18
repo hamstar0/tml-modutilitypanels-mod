@@ -15,10 +15,9 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 		public static float ContainerHeight = 520f;
 		
 		public static Texture2D UtilityPanelsIcon { get; private set; }
-		public static Texture2D UtilityPanelsIconLit { get; private set; }
-		public static Texture2D AlertBorder1 { get; private set; }
-		public static Texture2D AlertBorder2 { get; private set; }
-		public static Texture2D AlertBorder3 { get; private set; }
+		public static Texture2D UtilityPanelsIconHover { get; private set; }
+		public static Texture2D UtilityPanelsIconOn { get; private set; }
+		public static Texture2D UtilityPanelsIconOnAlert { get; private set; }
 
 
 
@@ -28,10 +27,9 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 			var mymod = ModUtilityPanelsMod.Instance;
 
 			UIUtilityPanels.UtilityPanelsIcon = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIcon" );
-			UIUtilityPanels.UtilityPanelsIconLit = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIconLit" );
-			UIUtilityPanels.AlertBorder1 = mymod.GetTexture( "Internals/UtilityPanels/AlertBorder1" );
-			UIUtilityPanels.AlertBorder2 = mymod.GetTexture( "Internals/UtilityPanels/AlertBorder2" );
-			UIUtilityPanels.AlertBorder3 = mymod.GetTexture( "Internals/UtilityPanels/AlertBorder3" );
+			UIUtilityPanels.UtilityPanelsIconHover = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIconHover" );
+			UIUtilityPanels.UtilityPanelsIconOn = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIconOn" );
+			UIUtilityPanels.UtilityPanelsIconOnAlert = mymod.GetTexture( "Internals/UtilityPanels/UtilityPanelsIconOnAlert" );
 
 			//
 

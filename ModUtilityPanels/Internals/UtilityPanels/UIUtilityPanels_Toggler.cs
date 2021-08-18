@@ -35,7 +35,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 
 		////////////////
 
-		public bool IsTogglerLit { get; private set; } = false;
+		public bool IsTogglerHovered { get; private set; } = false;
 
 
 
@@ -51,7 +51,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 		public void UpdateToggler() {
 			this.RunTogglerMouseInteraction();
 
-			if( this.IsTogglerLit ) {
+			if( this.IsTogglerHovered ) {
 				Main.LocalPlayer.mouseInterface = true;
 			}
 		}
@@ -64,45 +64,16 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 				return;
 			}
 
-			bool alertShown = this.IsTogglerUpdateAlertShown( out string _ );
-			Texture2D tex;
-			Color color;
+			bool alertShown = this.IsTogglerUpdateAlertShown( out string _, out bool isPriority );
+			Texture2D tex = alertShown
+				? isPriority
+					? UIUtilityPanels.UtilityPanelsIconOnAlert
+					: UIUtilityPanels.UtilityPanelsIconOn
+				: this.IsTogglerHovered
+					? UIUtilityPanels.UtilityPanelsIconHover
+					: UIUtilityPanels.UtilityPanelsIcon;
 
-			if( this.IsTogglerLit ) {
-				tex = UIUtilityPanels.UtilityPanelsIconLit;
-				color = new Color( 192, 192, 192, 192 );
-			} else {
-				tex = UIUtilityPanels.UtilityPanelsIcon;
-				color = new Color( 160, 160, 160, 160 );
-			}
-
-			sb.Draw( tex, UIUtilityPanels.TogglerPosition, null, color );
-
-			if( alertShown ) {
-				this.DrawTogglerAlert( sb, (float)color.A / 255f );
-			}
-
-			if( this.IsTogglerLit ) {
-				//if( alertShown ) {
-				//	sb.DrawString(
-				//		spriteFont: Main.fontMouseText,
-				//		text: "New mod updates!",
-				//		position: new Vector2( Main.mouseX + 8, Main.mouseY + 8 ),
-				//		color: AnimatedColors.Alert.CurrentColor
-				//	);
-				//} else {
-				Utils.DrawBorderStringFourWay(
-					sb: sb,
-					font: Main.fontMouseText,
-					text: "Mod Utility Panels",
-					x: Main.mouseX + 8,
-					y: Main.mouseY + 8,
-					textColor: new Color( Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor ),
-					borderColor: Color.Black,
-					origin: default
-				);
-				//}
-			}
+			sb.Draw( tex, UIUtilityPanels.TogglerPosition, null, Color.White );
 		}
 
 
@@ -113,13 +84,13 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 			Vector2 pos = UIUtilityPanels.TogglerPosition;
 			Vector2 size = UIUtilityPanels.UtilityPanelsIcon.Size();
 
-			this.IsTogglerLit = false;
+			this.IsTogglerHovered = false;
 
 			if( this.IsTogglerShown() ) {
-				bool isMouseOver = Main.mouseX >= pos.X && Main.mouseX < ( pos.X + size.X )
-								&& Main.mouseY >= pos.Y && Main.mouseY < ( pos.Y + size.Y );
+				this.IsTogglerHovered = Main.mouseX >= pos.X && Main.mouseX < ( pos.X + size.X )
+									 && Main.mouseY >= pos.Y && Main.mouseY < ( pos.Y + size.Y );
 
-				if( isMouseOver ) {
+				if( this.IsTogglerHovered ) {
 					if( isClick ) {
 						if( this.IsOpen ) {
 							this.Close();
@@ -127,8 +98,6 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 							this.OpenViaToggler();
 						}
 					}
-
-					this.IsTogglerLit = true;
 				}
 			}
 
@@ -139,22 +108,13 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 		////
 
 		private void OpenViaToggler() {
-			if( !this.IsTogglerUpdateAlertShown( out string tabName ) ) {
+			if( !this.IsTogglerUpdateAlertShown(out string tabName, out _) ) {
 				tabName = UIUtilityPanels.DefaultTabName;
 			} else {
 				this.AlertTabs.Remove( tabName );
 			}
 
 			UtilityPanelsTabs.OpenTab( tabName );
-
-			//var mymod = ModUtilityPanelsMod.Instance;
-			//Version oldVers;
-			//Version newVers = UIUtilityPanels.AlertSinceVersion;
-			//
-			//if( Version.TryParse( mymod.Data.UtilityPanelsNewSince, out oldVers ) && oldVers != newVers ) {
-			//	mymod.Data.UtilityPanelsNewSince = newVers.ToString();
-			//	mymod.SaveModData();
-			//}
 		}
 	}
 }
