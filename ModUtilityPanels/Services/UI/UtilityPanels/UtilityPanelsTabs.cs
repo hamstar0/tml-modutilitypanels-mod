@@ -5,7 +5,7 @@ using ModUtilityPanels.Internals.UtilityPanels;
 
 namespace ModUtilityPanels.Services.UI.UtilityPanels {
 	/// <summary>
-	/// Supplies an interface to add to and manage utility panel tabs. The control panel is accessible in the top
+	/// Supplies an interface to add to and manage utility panel tabs. The utility panels are accessible in the top
 	/// left corner (by default) when the player's inventory is displayed.
 	/// </summary>
 	public class UtilityPanelsTabs {
