@@ -78,7 +78,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 			if( this.IsTogglerHovered ) {
 				string text = alertShown
 					? "New "+alertTab+" Content!"
-					: "Mod Utility Panels";
+					: "Utilities";
 				Color color = new Color( Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor );
 
 				Utils.DrawBorderStringFourWay(

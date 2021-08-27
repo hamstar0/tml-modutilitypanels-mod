@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
@@ -37,13 +38,17 @@ namespace ModUtilityPanels.Internals.UtilityPanels {
 		////////////////
 
 		public bool ChangeToTabIf( string tabName ) {
-			if( tabName == this.CurrentTabName ) {
-				return true;
-			}
-
 			UIUtilityPanelsTab tab;
 			if( !this.Tabs.TryGetValue(tabName, out tab) ) {
 				return false;
+			}
+
+			foreach( Action<UIUtilityPanelsTab> openHook in tab._OnOpenTab ) {
+				openHook.Invoke( this.CurrentTab );
+			}
+
+			if( tabName == this.CurrentTabName ) {
+				return true;
 			}
 
 			this.ChangeToTabElement( tab );
