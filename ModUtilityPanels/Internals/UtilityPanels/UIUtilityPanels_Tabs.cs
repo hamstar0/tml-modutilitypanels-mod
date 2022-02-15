@@ -4,6 +4,7 @@ using Terraria.UI;
 using ModLibsCore.Classes.Errors;
 using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
+using ModUtilityPanels.Classes.UI;
 
 
 namespace ModUtilityPanels.Internals.UtilityPanels {

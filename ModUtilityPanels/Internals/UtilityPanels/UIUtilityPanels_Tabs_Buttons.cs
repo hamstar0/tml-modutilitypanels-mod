@@ -6,6 +6,7 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Reflection;
 using ModLibsCore.Services.Timers;
 using ModLibsUI.Classes.UI.Elements;
+using ModUtilityPanels.Classes.UI;
 using ModUtilityPanels.Services.UI.UtilityPanels;
 
 

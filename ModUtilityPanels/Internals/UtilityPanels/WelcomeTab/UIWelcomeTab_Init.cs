@@ -2,6 +2,7 @@
 using Terraria;
 using ModLibsCore.Libraries.Debug;
 using ModLibsUI.Classes.UI.Elements;
+using ModUtilityPanels.Classes.UI;
 
 
 namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {

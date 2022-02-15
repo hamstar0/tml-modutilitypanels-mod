@@ -11,6 +11,7 @@ using ModLibsCore.Libraries.Debug;
 using ModLibsCore.Libraries.DotNET.Extensions;
 using ModLibsUI.Classes.UI.Elements;
 using ModLibsUI.Classes.UI.Theme;
+using ModUtilityPanels.Classes.UI;
 
 
 namespace ModUtilityPanels.Internals.UtilityPanels {

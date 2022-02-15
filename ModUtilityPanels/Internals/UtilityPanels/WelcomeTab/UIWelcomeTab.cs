@@ -6,10 +6,12 @@ using Terraria.UI;
 using ModLibsCore.Services.Hooks.LoadHooks;
 using ModLibsUI.Classes.UI.Theme;
 using ModLibsUI.Classes.UI.Elements;
+using ModUtilityPanels.Classes.UI;
 using ModUtilityPanels.Services.UI.UtilityPanels;
 
 
 namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
+	/// @private
 	partial class UIWelcomeUtilityPanelsTab : UIUtilityPanelsTab {
 		private static IList<string> SupportMessages = new List<string> {
 			"Buy me coffee for coding! :)",
@@ -34,18 +36,21 @@ namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
 
 		////////////////
 
+		/// @private
 		public UIWelcomeUtilityPanelsTab( UITheme theme ) : base( theme ) {
 			this.Theme = theme;
 		}
 
 		////////////////
 
+		/// @private
 		public void AddCloseButton( UITextPanelButton button ) {
 			this.Append( button );
 		}
 
 		////////////////
 
+		/// @private
 		public override void OnInitializeMe() {
 			this.RandomSupportTextIdx = Main.rand.Next( UIWelcomeUtilityPanelsTab.SupportMessages.Count );
 			
@@ -60,6 +65,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
 
 		////////////////
 
+		/// @private
 		public override void Update( GameTime gameTime ) {
 			base.Update( gameTime );
 
@@ -75,6 +81,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
 
 		////////////////
 
+		/// @private
 		public override void Draw( SpriteBatch sb ) {
 			base.Draw( sb );
 			

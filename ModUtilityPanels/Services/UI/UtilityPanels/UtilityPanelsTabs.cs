@@ -1,5 +1,6 @@
 ﻿using System;
 using Terraria.ModLoader;
+using ModUtilityPanels.Classes.UI;
 using ModUtilityPanels.Internals.UtilityPanels;
 
 
