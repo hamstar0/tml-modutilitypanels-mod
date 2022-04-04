@@ -1,1 +1,1 @@
-Supplies a handy in-game mod-use utility panels dialog box that can support custom tabs. Accessible via. a toggle button in the top left corner when viewing the inventory screen.
+Supplies a handy in-game (mod-use only) "utility panels" UI dialog box with tabs. Accessible via. toggle button (top left screen corner) in the inventory screen. Tabs may be defined freely, and may also emit alerts to draw the user's attention.
