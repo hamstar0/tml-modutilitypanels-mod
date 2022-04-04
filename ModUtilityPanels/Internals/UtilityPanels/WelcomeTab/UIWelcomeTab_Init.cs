@@ -76,7 +76,7 @@ namespace ModUtilityPanels.Internals.UtilityPanels.WelcomeTab {
 		private void PopulateListOfMods( UIList list ) {
 			IEnumerable<Mod> mods = ModLoader.Mods
 				.Where( m => m.Name != "ModLoader" )
-				.OrderByDescending( m => m.Name );
+				.OrderBy( m => m.Name );
 
 			//
 
